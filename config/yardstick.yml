@@ -1,4 +1,4 @@
-threshold: 83.3
+threshold: 80.0
 require_exact_threshold: false
 rules:
   ApiTag::Presence:

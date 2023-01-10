@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Baleog
+  ###
+  #
+  # @api private
+  # @author darthjee
+  #
+  # This represents an endpoint to a service
   class Endpoint
     attr_reader :path, :http_method
 

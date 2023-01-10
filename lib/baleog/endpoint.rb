@@ -26,6 +26,8 @@ class Baleog
     #
     # @return [Symbol] the http method
 
+    # @param path [String] the endpoint path
+    # @param http_method [Symbol] the http method
     def initialize(path: nil, http_method: :get)
       @path        = path
       @http_method = http_method

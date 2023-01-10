@@ -1,5 +1,5 @@
-Jace
-====
+Baleog
+======
 [![Code Climate](https://codeclimate.com/github/darthjee/baleog/badges/gpa.svg)](https://codeclimate.com/github/darthjee/baleog)
 [![Test Coverage](https://codeclimate.com/github/darthjee/baleog/badges/coverage.svg)](https://codeclimate.com/github/darthjee/baleog/coverage)
 [![Issue Count](https://codeclimate.com/github/darthjee/baleog/badges/issue_count.svg)](https://codeclimate.com/github/darthjee/baleog)

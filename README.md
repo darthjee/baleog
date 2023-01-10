@@ -7,7 +7,7 @@ Baleog
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9836de08612e46b889c7978be2b72a14)](https://www.codacy.com/manual/darthjee/baleog?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=darthjee/baleog&amp;utm_campaign=Badge_Grade)
 [![Inline docs](http://inch-ci.org/github/darthjee/baleog.svg?branch=master)](http://inch-ci.org/github/darthjee/baleog)
 
-![baleog](https://raw.githubusercontent.com/darthjee/baleog/master/baleog.jpg)
+![baleog](https://raw.githubusercontent.com/darthjee/baleog/master/baleog.png)
 
 Yard Documentation
 -------------------

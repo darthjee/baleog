@@ -8,4 +8,5 @@ class Baleog
   autoload :VERSION, 'baleog/version'
 
   autoload :Endpoint, 'baleog/endpoint'
+  autoload :Model,    'baleog/model'
 end

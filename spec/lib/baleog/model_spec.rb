@@ -17,6 +17,28 @@ describe Baleog::Model do
     end
   end
 
+  describe '.fields' do
+    it do
+      expect { model_class.fields :field_name, :other_field }
+        .to add_method(:field_name).to(model_class)
+    end
+
+    it do
+      expect { model_class.fields :field_name, :other_field }
+        .to add_method(:other_field).to(model_class)
+    end
+
+    it do
+      expect { model_class.fields :field_name, :other_field }
+        .to add_method(:field_name=).to(model_class)
+    end
+
+    it do
+      expect { model_class.fields :field_name, :other_field }
+        .to add_method(:other_field=).to(model_class)
+    end
+  end
+
   describe '#initialize' do
     context 'when no argument is given' do
       it { expect { model_class.new }.not_to raise_error }

@@ -33,21 +33,21 @@ describe Baleog::Model do
         model_class.field(:key)
       end
 
-      context 'when the model is initialized with a hash with symbol for keys' do
+      context 'when the it is initialized with a hash with symbol for keys' do
         it 'returns the value from the hash' do
           expect(model.key).to eq(:value)
         end
       end
 
-      context 'when the model is initialized with a hash with strings for keys' do
-        let(:hash) { { "key" => :value } }
+      context 'when the it is initialized with a hash with strings for keys' do
+        let(:hash) { { 'key' => :value } }
 
         it 'returns the value from the hash' do
           expect(model.key).to eq(:value)
         end
       end
 
-      context 'when the model is initialized with nothing' do
+      context 'when the it is initialized with nothing' do
         let(:model) { model_class.new }
 
         it { expect(model.key).to be_nil }
@@ -61,42 +61,42 @@ describe Baleog::Model do
         model_class.field(:key)
       end
 
-      context 'when the model is initialized with a hash with symbol for keys' do
+      context 'when the it is initialized with a hash with symbol for keys' do
         it 'returns the new value' do
-          expect(model.key=(:new_value)).to eq(:new_value)
+          expect(model.key = :new_value).to eq(:new_value)
         end
 
         it 'changes the value from the reader' do
-          expect { model.key=(:new_value) }
-            .to change { model.key }
+          expect { model.key = :new_value }
+            .to change(model, :key)
             .from(:value).to(:new_value)
         end
       end
 
-      context 'when the model is initialized with a hash with strings for keys' do
-        let(:hash) { { "key" => :value } }
+      context 'when the it is initialized with a hash with strings for keys' do
+        let(:hash) { { 'key' => :value } }
 
         it 'returns the new value' do
-          expect(model.key=(:new_value)).to eq(:new_value)
+          expect(model.key = :new_value).to eq(:new_value)
         end
 
         it 'changes the value from the reader' do
-          expect { model.key=(:new_value) }
-            .to change { model.key }
+          expect { model.key = :new_value }
+            .to change(model, :key)
             .from(:value).to(:new_value)
         end
       end
 
-      context 'when the model is initialized with nothing' do
+      context 'when the it is initialized with nothing' do
         let(:model) { model_class.new }
 
         it 'returns the new value' do
-          expect(model.key=(:new_value)).to eq(:new_value)
+          expect(model.key = :new_value).to eq(:new_value)
         end
 
         it 'changes the value from the reader' do
-          expect { model.key=(:new_value) }
-            .to change { model.key }
+          expect { model.key = :new_value }
+            .to change(model, :key)
             .from(nil).to(:new_value)
         end
       end

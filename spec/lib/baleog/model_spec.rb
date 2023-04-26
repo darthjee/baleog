@@ -5,6 +5,18 @@ require 'spec_helper'
 describe Baleog::Model do
   let(:model_class) { Class.new(described_class) }
 
+  describe '.field' do
+    it do
+      expect { model_class.field :field_name }
+        .to add_method(:field_name).to(model_class)
+    end
+
+    it do
+      expect { model_class.field :field_name }
+        .to add_method(:field_name=).to(model_class)
+    end
+  end
+
   describe '#initialize' do
     context 'when no argument is given' do
       it { expect { model_class.new }.not_to raise_error }

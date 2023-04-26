@@ -8,6 +8,7 @@ class Baleog
     extend ClassMethods
 
     def initialize(hash = {})
+      @hash = hash.stringify_keys
     end
   end
 end

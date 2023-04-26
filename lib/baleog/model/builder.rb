@@ -10,7 +10,10 @@ class Baleog
       end
 
       def add_field(field_name)
+        name = field_name.to_s
+
         add_method(field_name) do
+          @hash[name]
         end
 
         add_method("#{field_name}=") do

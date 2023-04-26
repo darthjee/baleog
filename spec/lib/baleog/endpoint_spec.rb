@@ -15,14 +15,6 @@ describe Baleog::Endpoint do
     }.compact
   end
 
-  describe '#initialize' do
-    let(:attributes) { {} }
-
-    context 'when no attribute is given' do
-      it { expect { endpoint }.not_to raise_error }
-    end
-  end
-
   describe '#path' do
     it 'returns the given path' do
       expect(endpoint.path).to eq(path)

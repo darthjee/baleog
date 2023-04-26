@@ -16,7 +16,8 @@ class Baleog
           @hash[name]
         end
 
-        add_method("#{field_name}=") do
+        add_method("#{field_name}=") do |value|
+          @hash[name] = value
         end
       end
     end

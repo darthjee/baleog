@@ -54,4 +54,52 @@ describe Baleog::Model do
       end
     end
   end
+
+  describe 'writter method call' do
+    context 'when no options were given when generating the field' do
+      before do
+        model_class.field(:key)
+      end
+
+      context 'when the model is initialized with a hash with symbol for keys' do
+        it 'returns the new value' do
+          expect(model.key=(:new_value)).to eq(:new_value)
+        end
+
+        it 'changes the value from the reader' do
+          expect { model.key=(:new_value) }
+            .to change { model.key }
+            .from(:value).to(:new_value)
+        end
+      end
+
+      context 'when the model is initialized with a hash with strings for keys' do
+        let(:hash) { { "key" => :value } }
+
+        it 'returns the new value' do
+          expect(model.key=(:new_value)).to eq(:new_value)
+        end
+
+        it 'changes the value from the reader' do
+          expect { model.key=(:new_value) }
+            .to change { model.key }
+            .from(:value).to(:new_value)
+        end
+      end
+
+      context 'when the model is initialized with nothing' do
+        let(:model) { model_class.new }
+
+        it 'returns the new value' do
+          expect(model.key=(:new_value)).to eq(:new_value)
+        end
+
+        it 'changes the value from the reader' do
+          expect { model.key=(:new_value) }
+            .to change { model.key }
+            .from(nil).to(:new_value)
+        end
+      end
+    end
+  end
 end

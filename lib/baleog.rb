@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sinclair'
+
 # @api public
 # @author darthjee
 class Baleog

@@ -7,10 +7,16 @@ class Baleog
   # @author darthjee
   #
   # This represents an endpoint to a service
-  class Endpoint
-    attr_reader :path, :http_method
+  class Endpoint < Sinclair::Model
+    initialize_with :path, { http_method: :get }, **{}
 
+    # Available HTTP methods for an endpoint
     HTTP_METHODS = %i[get post delete patch].freeze
+
+    # @!method initialize(path:, http_method: :get)
+    # @param path [String] Path of the endpoint
+    # @param http_method [Symbol] HTTP method to be used.
+    #   Available options are defined in {HTTP_METHODS}
 
     # @method path
     #
@@ -25,12 +31,5 @@ class Baleog
     # The available list is included in {HTTP_METHODS}
     #
     # @return [Symbol] the http method
-
-    # @param path [String] the endpoint path
-    # @param http_method [Symbol] the http method
-    def initialize(path: nil, http_method: :get)
-      @path        = path
-      @http_method = http_method
-    end
   end
 end

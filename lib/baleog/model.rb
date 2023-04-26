@@ -8,7 +8,12 @@ class Baleog
     extend ClassMethods
 
     def initialize(hash = {})
-      @hash = hash.stringify_keys
+      case hash
+      when Hash
+        @hash = hash.stringify_keys
+      when String
+        @hash = JSON.parse(hash)
+      end
     end
   end
 end

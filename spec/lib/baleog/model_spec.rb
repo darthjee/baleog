@@ -46,6 +46,12 @@ describe Baleog::Model do
           expect(model.key).to eq(:value)
         end
       end
+
+      context 'when the model is initialized with nothing' do
+        let(:model) { model_class.new }
+
+        it { expect(model.key).to be_nil }
+      end
     end
   end
 end

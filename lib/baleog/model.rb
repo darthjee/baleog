@@ -2,5 +2,7 @@
 
 class Baleog
   class Model
+    def initialize(_ = {})
+    end
   end
 end

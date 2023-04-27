@@ -5,7 +5,12 @@ class Baleog
     module ValueWrapper
       class << self
         def wrap(value, klass)
-          value
+          case klass
+          when :string
+            value.to_s
+          else
+            value
+          end
         end
       end
     end

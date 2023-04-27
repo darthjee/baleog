@@ -43,10 +43,10 @@ describe Baleog::Model::Builder do
       end
     end
 
-    context 'when alias is provided' do
+    context 'when key is provided' do
       let(:block) do
         proc do
-          builder.add_field :field_name, alias_name: :field
+          builder.add_field :field, key: :field_name
           builder.build
         end
       end

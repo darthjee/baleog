@@ -10,35 +10,81 @@ describe Baleog::Model::Builder do
   let(:model)       { model_class.new(hash) }
 
   describe '.add_field' do
-    let(:block) do
-      proc do
-        builder.add_field :field_name
-        builder.build
+    context 'when no options are given' do
+      let(:block) do
+        proc do
+          builder.add_field :field_name
+          builder.build
+        end
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'after the build' do
+        before { block.call }
+
+        it 'reads the value in the reader' do
+          expect(model.field_name).to eq(:value)
+        end
+
+        it 'writtes the value in the writter' do
+          expect { model.field_name = :new_value }
+            .to change(model, :field_name)
+            .from(:value).to(:new_value)
+        end
       end
     end
 
-    it 'Adds reader' do
-      expect(&block)
-        .to add_method(:field_name).to(model_class)
-    end
-
-    it 'Adds writter' do
-      expect(&block)
-        .to add_method(:field_name=).to(model_class)
-    end
-
-    context 'after the build' do
-      before { block.call }
-
-      it 'reads the value in the reader' do
-        expect(model.field_name).to eq(:value)
+    context 'when alias is provided' do
+      let(:block) do
+        proc do
+          builder.add_field :field_name, alias: :field
+          builder.build
+        end
       end
 
-      it 'writtes the value in the writter' do
-        expect { model.field_name = :new_value }
-          .to change(model, :field_name)
-          .from(:value).to(:new_value)
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field).to(model_class)
       end
+
+      it 'does not add original name reader' do
+        expect(&block)
+          .not_to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field=).to(model_class)
+      end
+
+      it 'does not add original name writter' do
+        expect(&block)
+          .not_to add_method(:field_name=).to(model_class)
+      end
+
+      context 'after the build' do
+        before { block.call }
+
+        it 'reads the value in the reader' do
+          expect(model.field).to eq(:value)
+        end
+
+        it 'writtes the value in the writter' do
+          expect { model.field = :new_value }
+            .to change(model, :field)
+            .from(:value).to(:new_value)
+        end
+      end
+
     end
   end
 

@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+describe Baleog::Model::Builder do
+  subject(:builder) { described_class.new(model_class) }
+
+  let(:model_class) { Class.new(Baleog::Model) }
+  let(:hash)        { { field_name: :value } }
+  let(:model)       { model_class.new(hash) }
+
+  describe '.add_field' do
+    let(:block) do
+      proc do
+        builder.add_field :field_name
+        builder.build
+      end
+    end
+
+    it 'Adds reader' do
+      expect(&block)
+        .to add_method(:field_name).to(model_class)
+    end
+
+    it 'Adds writter' do
+      expect(&block)
+        .to add_method(:field_name=).to(model_class)
+    end
+
+    context 'after the build' do
+      before { block.call }
+
+      it 'reads the value in the reader' do
+        expect(model.field_name).to eq(:value)
+      end
+
+      it 'writtes the value in the writter' do
+        expect { model.field_name = :new_value }
+          .to change(model, :field_name)
+          .from(:value).to(:new_value)
+      end
+    end
+  end
+
+  describe '.add_fields' do
+    let(:block) do
+      proc do
+        builder.add_fields [:field_name, :other_field]
+        builder.build
+      end
+    end
+
+    it 'Adds reader for the first field' do
+      expect(&block)
+        .to add_method(:field_name).to(model_class)
+    end
+
+    it 'Adds reader for the other field' do
+      expect(&block)
+        .to add_method(:other_field).to(model_class)
+    end
+
+    it 'Adds writter for the first field' do
+      expect(&block)
+        .to add_method(:field_name=).to(model_class)
+    end
+
+    it 'Adds writter for the other field' do
+      expect(&block)
+        .to add_method(:other_field=).to(model_class)
+    end
+  end
+end
+

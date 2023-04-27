@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+require 'sinclair/matchers'
 
 SimpleCov.profiles.define 'gem' do
   add_filter '/spec/'
@@ -22,6 +23,7 @@ RSpec.configure do |config|
   config.filter_run_excluding :integration unless ENV['ALL']
 
   config.order = 'random'
+  config.include Sinclair::Matchers
 end
 
 RSpec::Matchers.define_negated_matcher :not_change, :change

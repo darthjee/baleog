@@ -4,18 +4,28 @@ class Baleog
   class Model
     module ValueWrapper
       class << self
-        def wrappers
-          @wrappers ||= {}
-        end
-
         def with_wrapper(key, &block)
           wrappers[key] = block
         end
 
         def wrap(value, klass)
-          return wrappers[klass].call(value) if wrappers[klass]
+          return wrapped(klass, value) if wrapper_defined?(klass)
 
           value
+        end
+
+        private
+
+        def wrapped(key, value)
+          wrappers[key].call(value)
+        end
+
+        def wrappers
+          @wrappers ||= {}
+        end
+
+        def wrapper_defined?(key)
+          wrappers.key?(key)
         end
       end
 

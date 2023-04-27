@@ -22,5 +22,23 @@ describe Baleog::Model::ValueWrapper do
           .to eq(value.to_s)
       end
     end
+
+    context 'when class is :integer' do
+      let(:value) { '10.5' }
+
+      it 'returns the value as integer' do
+        expect(described_class.wrap(value, :integer))
+          .to eq(10)
+      end
+    end
+
+    context 'when class is :float' do
+      let(:value) { '10.5' }
+
+      it 'returns the value as integer' do
+        expect(described_class.wrap(value, :integer))
+          .to eq(10)
+      end
+    end
   end
 end

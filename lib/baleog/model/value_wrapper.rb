@@ -8,6 +8,10 @@ class Baleog
           case klass
           when :string
             value.to_s
+          when :integer
+            value.to_i
+          when :float
+            value.to_f
           else
             value
           end

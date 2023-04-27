@@ -9,15 +9,15 @@ class Baleog
         end
 
         def wrap(value, klass)
-          return wrapped(klass, value) if wrapper_defined?(klass)
+          return value unless wrapper_defined?(klass)
 
-          value
+          wrapped(klass, value)
         end
 
         private
 
         def wrapped(key, value)
-          wrappers[key].call(value)
+          wrappers[key].to_proc.call(value)
         end
 
         def wrappers
@@ -29,9 +29,9 @@ class Baleog
         end
       end
 
-      with_wrapper(:string, &:to_s)
-      with_wrapper(:integer, &:to_i)
-      with_wrapper(:float, &:to_f)
+      with_wrapper(:string, :to_s)
+      with_wrapper(:integer, :to_i)
+      with_wrapper(:float, :to_f)
     end
   end
 end

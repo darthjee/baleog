@@ -9,14 +9,14 @@ class Baleog
         end
       end
 
-      def add_field(field_name)
+      def add_field(field_name, alias_name: field_name)
         name = field_name.to_s
 
-        add_method(field_name) do
+        add_method(alias_name) do
           @hash[name]
         end
 
-        add_method("#{field_name}=") do |value|
+        add_method("#{alias_name}=") do |value|
           @hash[name] = value
         end
       end

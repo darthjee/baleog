@@ -4,6 +4,7 @@ class Baleog
   class Model
     autoload :Builder,      'baleog/model/builder'
     autoload :ClassMethods, 'baleog/model/class_methods'
+    autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods
 

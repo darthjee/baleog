@@ -28,7 +28,7 @@ describe Baleog::Model::Builder do
           .to add_method(:field_name=).to(model_class)
       end
 
-      context 'after the build' do
+      context 'when the build is done' do
         before { block.call }
 
         it 'reads the value in the reader' do
@@ -71,7 +71,7 @@ describe Baleog::Model::Builder do
           .not_to add_method(:field_name=).to(model_class)
       end
 
-      context 'after the build' do
+      context 'when the build is done' do
         before { block.call }
 
         it 'reads the value in the reader' do
@@ -84,14 +84,13 @@ describe Baleog::Model::Builder do
             .from(:value).to(:new_value)
         end
       end
-
     end
   end
 
   describe '.add_fields' do
     let(:block) do
       proc do
-        builder.add_fields [:field_name, :other_field]
+        builder.add_fields %i[field_name other_field]
         builder.build
       end
     end
@@ -117,4 +116,3 @@ describe Baleog::Model::Builder do
     end
   end
 end
-

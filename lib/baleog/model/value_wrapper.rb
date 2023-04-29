@@ -2,36 +2,12 @@
 
 class Baleog
   class Model
-    module ValueWrapper
-      class << self
-        def with_wrapper(key, &block)
-          wrappers[key] = block
-        end
+    class ValueWrapper < Sinclair::Caster
+      master_caster!
 
-        def wrap(value, klass)
-          return value unless wrapper_defined?(klass)
-
-          wrapped(klass, value)
-        end
-
-        private
-
-        def wrapped(key, value)
-          wrappers[key].to_proc.call(value)
-        end
-
-        def wrappers
-          @wrappers ||= {}
-        end
-
-        def wrapper_defined?(key)
-          wrappers.key?(key)
-        end
-      end
-
-      with_wrapper(:string, :to_s)
-      with_wrapper(:integer, :to_i)
-      with_wrapper(:float, :to_f)
+      cast_with(:string, :to_s)
+      cast_with(:integer, :to_i)
+      cast_with(:float, :to_f)
     end
   end
 end

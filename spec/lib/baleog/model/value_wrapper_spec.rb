@@ -35,9 +35,9 @@ describe Baleog::Model::ValueWrapper do
     context 'when class is :float' do
       let(:value) { '10.5' }
 
-      it 'returns the value as integer' do
-        expect(described_class.cast(value, :integer))
-          .to eq(10)
+      it 'returns the value as float' do
+        expect(described_class.cast(value, :float))
+          .to eq(10.5)
       end
     end
   end

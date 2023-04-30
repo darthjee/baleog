@@ -16,14 +16,14 @@ describe Baleog::Model::ValueWrapper do
       end
     end
 
-    context 'when class is :string' do
+    context 'when key is :string' do
       it 'returns the value as string' do
         expect(described_class.cast(value, :string))
           .to eq(value.to_s)
       end
     end
 
-    context 'when class is :integer' do
+    context 'when key is :integer' do
       let(:value) { '10.5' }
 
       it 'returns the value as integer' do
@@ -32,7 +32,7 @@ describe Baleog::Model::ValueWrapper do
       end
     end
 
-    context 'when class is :float' do
+    context 'when key is :float' do
       let(:value) { '10.5' }
 
       it 'returns the value as float' do

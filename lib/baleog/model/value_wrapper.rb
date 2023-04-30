@@ -6,8 +6,11 @@ class Baleog
       master_caster!
 
       cast_with(:string, :to_s)
+      cast_with(String, :to_s)
       cast_with(:integer, :to_i)
+      cast_with(Integer, :to_i)
       cast_with(:float, :to_f)
+      cast_with(Float, :to_f)
     end
   end
 end

@@ -17,7 +17,7 @@ class Baleog
 
         return hash.map { |h| from(h) } if hash.is_a?(Array)
 
-        new
+        new(hash)
       end
     end
   end

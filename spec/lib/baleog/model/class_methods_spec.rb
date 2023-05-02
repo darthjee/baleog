@@ -43,6 +43,11 @@ describe Baleog::Model::ClassMethods do
     let(:array) { [ hash ] }
     let(:hash) { { field: value } }
     let(:value) { :value }
+    let(:model_class) do
+      Class.new(Baleog::Model) do
+        field :field
+      end
+    end
 
     context 'when nil is given' do
       let(:object) { nil }
@@ -54,12 +59,22 @@ describe Baleog::Model::ClassMethods do
       let(:object) { hash }
 
       it { expect(model_class.from(object)).to be_a(model_class) }
+
+      it 'ínitializes the model with the correct value' do
+        expect(model_class.from(object))
+          .to eq(model_class.new(hash))
+      end
     end
 
     context 'when a JSON for a hash is given' do
       let(:object) { hash.to_json }
 
       it { expect(model_class.from(object)).to be_a(model_class) }
+
+      it 'ínitializes the model with the correct value' do
+        expect(model_class.from(object))
+          .to eq(model_class.new(hash))
+      end
     end
 
     context 'when an array is given' do
@@ -67,6 +82,11 @@ describe Baleog::Model::ClassMethods do
 
       it { expect(model_class.from(object)).to be_a(Array) }
       it { expect(model_class.from(object)).to all(be_a(model_class)) }
+
+      it 'ínitializes the model with the correct value' do
+        expect(model_class.from(object).first)
+          .to eq(model_class.new(hash))
+      end
     end
 
     context 'when a JSON for an array is given' do
@@ -74,6 +94,11 @@ describe Baleog::Model::ClassMethods do
 
       it { expect(model_class.from(object)).to be_a(Array) }
       it { expect(model_class.from(object)).to all(be_a(model_class)) }
+
+      it 'ínitializes the model with the correct value' do
+        expect(model_class.from(object).first)
+          .to eq(model_class.new(hash))
+      end
     end
   end
 end

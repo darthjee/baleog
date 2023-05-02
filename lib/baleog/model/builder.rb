@@ -12,9 +12,10 @@ module Baleog
       def add_field(field_name, key: field_name, cast: nil)
         name = key.to_s
         caster = ValueWrapper.caster_for(cast)
+        cast_class = cast
 
         add_method(field_name) do
-          caster.cast(@hash[name])
+          caster.cast(@hash[name], klass: cast_class)
         end
 
         add_method("#{field_name}=") do |value|

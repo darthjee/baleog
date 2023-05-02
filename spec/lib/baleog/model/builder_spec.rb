@@ -5,8 +5,10 @@ require 'spec_helper'
 describe Baleog::Model::Builder do
   subject(:builder) { described_class.new(model_class) }
 
-  let(:model_class) { Class.new(Baleog::Model) }
-  let(:hash)        { { field_name: :value } }
+  let(:base_model_class) { Baleog::Model.build }
+  let(:model_class) { Class.new(base_model_class) }
+  let(:hash)        { { field_name: value } }
+  let(:value)       { :value }
   let(:model)       { model_class.new(hash) }
 
   describe '.add_field' do
@@ -32,13 +34,13 @@ describe Baleog::Model::Builder do
         before { block.call }
 
         it 'reads the value in the reader with casting' do
-          expect(model.field_name).to eq(:value)
+          expect(model.field_name).to eq(value)
         end
 
         it 'writtes the value in the writter' do
           expect { model.field_name = :new_value }
             .to change(model, :field_name)
-            .from(:value).to(:new_value)
+            .from(value).to(:new_value)
         end
       end
     end
@@ -75,13 +77,13 @@ describe Baleog::Model::Builder do
         before { block.call }
 
         it 'reads the value in the reader' do
-          expect(model.field).to eq(:value)
+          expect(model.field).to eq(value)
         end
 
         it 'writtes the value in the writter' do
           expect { model.field = :new_value }
             .to change(model, :field)
-            .from(:value).to(:new_value)
+            .from(value).to(:new_value)
         end
       end
     end
@@ -115,6 +117,57 @@ describe Baleog::Model::Builder do
           expect { model.field_name = :new_value }
             .to change(model, :field_name)
             .from('value').to('new_value')
+        end
+      end
+    end
+
+    context 'when cast model class is given' do
+      let(:value)          { { key: some_value } }
+      let(:new_value)      { { key: some_new_value } }
+      let(:some_value)     { :some_value }
+      let(:some_new_value) { :some_new_value }
+
+      let(:other_model_class) do
+        Class.new(base_model_class) do
+          field :key
+        end
+      end
+
+      let(:block) do
+        proc do
+          builder.add_field :field_name, cast: other_model_class 
+          builder.build
+        end
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the build is done' do
+        before { block.call }
+
+        it do
+          expect(model.field_name)
+            .to be_a(other_model_class)
+        end
+
+        it 'reads the value in the reader' do
+          expect(model.field_name)
+            .to eq(other_model_class.new(value))
+        end
+
+        it 'writtes the value in the writter' do
+          expect { model.field_name = new_value }
+            .to change(model, :field_name)
+            .from(other_model_class.new(value))
+            .to(other_model_class.new(new_value))
         end
       end
     end

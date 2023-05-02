@@ -3,9 +3,10 @@
 require 'spec_helper'
 
 describe Baleog::Model::ValueWrapper do
-  subject(:wrapper_class) { client_module::Model::ValueWrapper }
+  subject(:wrapper_class) { base_model_class::ValueWrapper }
 
-  let(:client_module) { Baleog.build }
+  let(:client_module)    { Baleog.build }
+  let(:base_model_class) { client_module::Model }
 
   describe '.cast' do
     let(:value) { values.sample }
@@ -45,7 +46,19 @@ describe Baleog::Model::ValueWrapper do
       end
     end
 
-    context 'when key is a ' do
+    context 'when key is a model class' do
+      let(:model_class) { Class.new(base_model_class) }
+      let(:value) { { key: :value } }
+
+      it do
+        expect(wrapper_class.cast(value, model_class, klass: model_class))
+          .to be_a(model_class)
+      end
+
+      it 'initializes the model with the correct value' do
+        expect(wrapper_class.cast(value, model_class, klass: model_class))
+          .to eq(model_class.new(value))
+      end
     end
   end
 end

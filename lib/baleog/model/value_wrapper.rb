@@ -15,6 +15,10 @@ module Baleog
       cast_with(Integer, :to_i)
       cast_with(:float, :to_f)
       cast_with(Float, :to_f)
+
+      cast_with(Baleog::Model) do |value, klass:|
+        klass.new(value)
+      end
     end
   end
 end

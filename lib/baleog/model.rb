@@ -7,6 +7,9 @@ class Baleog
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods
+    include Sinclair::Comparable
+
+    comparable_by :@hash
 
     def initialize(hash = {})
       case hash
@@ -15,12 +18,6 @@ class Baleog
       when String
         @hash = JSON.parse(hash)
       end
-    end
-
-    def ==(other)
-      return unless other.class == self.class
-
-      other.instance_variable_get(:@hash) == @hash
     end
   end
 end

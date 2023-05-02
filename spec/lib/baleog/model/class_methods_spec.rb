@@ -5,6 +5,17 @@ require 'spec_helper'
 describe Baleog::Model::ClassMethods do
   let(:model_class) { Class.new(Baleog::Model) }
 
+  describe '#build' do
+    it do
+      expect(Baleog::Model.build < Baleog::Model).to be_truthy
+    end
+
+    it 'adds a value wrapper' do
+      expect(Baleog::Model.build::ValueWrapper < Baleog::Model::ValueWrapper)
+        .to be_truthy
+    end
+  end
+
   describe '#field' do
     it 'Adds reader' do
       expect { model_class.field :field_name }

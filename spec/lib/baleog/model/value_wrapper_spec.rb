@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe Baleog::Model::ValueWrapper do
+  subject(:wrapper_class) { Class.new(described_class) }
+
   describe '.cast' do
     let(:value) { values.sample }
     let(:values) do
@@ -11,14 +13,14 @@ describe Baleog::Model::ValueWrapper do
 
     context 'when klass is nil' do
       it 'returns the value' do
-        expect(described_class.cast(value, nil))
+        expect(wrapper_class.cast(value, nil))
           .to eq(value)
       end
     end
 
     context 'when key is :string' do
       it 'returns the value as string' do
-        expect(described_class.cast(value, :string))
+        expect(wrapper_class.cast(value, :string))
           .to eq(value.to_s)
       end
     end
@@ -27,7 +29,7 @@ describe Baleog::Model::ValueWrapper do
       let(:value) { '10.5' }
 
       it 'returns the value as integer' do
-        expect(described_class.cast(value, :integer))
+        expect(wrapper_class.cast(value, :integer))
           .to eq(10)
       end
     end
@@ -36,9 +38,12 @@ describe Baleog::Model::ValueWrapper do
       let(:value) { '10.5' }
 
       it 'returns the value as float' do
-        expect(described_class.cast(value, :float))
+        expect(wrapper_class.cast(value, :float))
           .to eq(10.5)
       end
+    end
+
+    context 'when key is a ' do
     end
   end
 end

@@ -13,11 +13,20 @@ module Baleog
     end
 
     def build(&block)
-      base_class.new.tap(&block)
+      new_class.tap(&block)
     end
 
     private
 
     attr_reader :base_class
+
+    def new_class
+      return base_class.new if module?
+      Class.new(base_class)
+    end
+
+    def module?
+      base_class == Module
+    end
   end
 end

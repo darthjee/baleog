@@ -11,6 +11,10 @@ module Baleog
 
     comparable_by :@hash
 
+    def self.build
+      Class.new(self)
+    end
+
     def initialize(hash = {})
       @hash = hash.stringify_keys
     end

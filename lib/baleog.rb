@@ -13,8 +13,8 @@ module Baleog
 
   def self.build
     Module.new.tap do |mod|
-      mod.const_set(:Model, Class.new(Baleog::Model))
-      mod.const_set(:Client, Class.new(Baleog::Client))
+      mod.const_set(:Model, Model.build)
+      mod.const_set(:Client, Client.build)
     end
   end
 end

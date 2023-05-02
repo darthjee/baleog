@@ -11,7 +11,7 @@ class Baleog
 
       def add_field(field_name, key: field_name, cast: nil)
         name = key.to_s
-        caster = ValueWrapper.caster_for(cast) 
+        caster = ValueWrapper.caster_for(cast)
 
         add_method(field_name) do
           caster.cast(@hash[name])

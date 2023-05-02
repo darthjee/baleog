@@ -16,5 +16,11 @@ class Baleog
         @hash = JSON.parse(hash)
       end
     end
+
+    def ==(other)
+      return unless other.class == self.class
+
+      other.instance_variable_get(:@hash) == @hash
+    end
   end
 end

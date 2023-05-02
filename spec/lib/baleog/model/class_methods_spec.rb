@@ -73,7 +73,7 @@ describe Baleog::Model::ClassMethods do
 
       it 'ínitializes the model with the correct value' do
         expect(model_class.from(object))
-          .to eq(model_class.new(hash))
+          .to eq(model_class.new(JSON.parse(object)))
       end
     end
 
@@ -97,7 +97,7 @@ describe Baleog::Model::ClassMethods do
 
       it 'ínitializes the model with the correct value' do
         expect(model_class.from(object).first)
-          .to eq(model_class.new(hash))
+          .to eq(model_class.new(JSON.parse(hash.to_json)))
       end
     end
   end

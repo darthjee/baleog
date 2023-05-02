@@ -33,7 +33,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rubocop-rspec',      '1.38.1'
   gem.add_development_dependency 'rubycritic',         '4.7.0'
   gem.add_development_dependency 'simplecov',          '0.21.2'
-  gem.add_development_dependency 'sinclair',           '1.14.1'
   gem.add_development_dependency 'yard',               '0.9.27'
   gem.add_development_dependency 'yardstick',          '0.9.9'
+
+  gem.add_runtime_dependency 'sinclair', '>= 1.16.0'
 end

@@ -4,15 +4,11 @@ class Baleog
   class Model
     module ClassMethods
       def fields(*field_names)
-        Builder.new(self).tap do |builder|
-          builder.add_fields(field_names)
-        end.build
+        Builder.build(self) { add_fields(field_names) }
       end
 
       def field(field_name)
-        Builder.new(self).tap do |builder|
-          builder.add_field(field_name)
-        end.build
+        Builder.build(self) { add_field(field_name) }
       end
     end
   end

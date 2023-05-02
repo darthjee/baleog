@@ -48,7 +48,7 @@ describe Baleog::Model::ValueWrapper do
 
     context 'when key is a model class' do
       let(:model_class) { Class.new(base_model_class) }
-      let(:value) { { key: :value } }
+      let(:value)       { { key: :value } }
 
       it do
         expect(wrapper_class.cast(value, model_class, klass: model_class))

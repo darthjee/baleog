@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baleog
+module Baleog
   class Model
     module ClassMethods
       def fields(*field_names)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baleog
+module Baleog
   class Model
     autoload :Builder,      'baleog/model/builder'
     autoload :ClassMethods, 'baleog/model/class_methods'

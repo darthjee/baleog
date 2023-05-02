@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 describe Baleog::Model::ValueWrapper do
-  subject(:wrapper_class) { Class.new(described_class) }
+  subject(:wrapper_class) { client_module::Model::ValueWrapper }
+
+  let(:client_module) { Baleog.build }
 
   describe '.cast' do
     let(:value) { values.sample }

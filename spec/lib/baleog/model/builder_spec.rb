@@ -6,10 +6,10 @@ describe Baleog::Model::Builder do
   subject(:builder) { described_class.new(model_class) }
 
   let(:base_model_class) { Baleog::Model.build }
-  let(:model_class) { Class.new(base_model_class) }
-  let(:hash)        { { field_name: value } }
-  let(:value)       { :value }
-  let(:model)       { model_class.new(hash) }
+  let(:model_class)      { Class.new(base_model_class) }
+  let(:hash)             { { field_name: value } }
+  let(:value)            { :value }
+  let(:model)            { model_class.new(hash) }
 
   describe '.add_field' do
     context 'when no options are given' do
@@ -135,7 +135,7 @@ describe Baleog::Model::Builder do
 
       let(:block) do
         proc do
-          builder.add_field :field_name, cast: other_model_class 
+          builder.add_field :field_name, cast: other_model_class
           builder.build
         end
       end

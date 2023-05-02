@@ -31,7 +31,7 @@ describe Baleog::Model::Builder do
       context 'when the build is done' do
         before { block.call }
 
-        it 'reads the value in the reader' do
+        it 'reads the value in the reader with casting' do
           expect(model.field_name).to eq(:value)
         end
 
@@ -82,6 +82,39 @@ describe Baleog::Model::Builder do
           expect { model.field = :new_value }
             .to change(model, :field)
             .from(:value).to(:new_value)
+        end
+      end
+    end
+
+    context 'when cast is given' do
+      let(:block) do
+        proc do
+          builder.add_field :field_name, cast: :string
+          builder.build
+        end
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the build is done' do
+        before { block.call }
+
+        it 'reads the value in the reader' do
+          expect(model.field_name).to eq('value')
+        end
+
+        it 'writtes the value in the writter' do
+          expect { model.field_name = :new_value }
+            .to change(model, :field_name)
+            .from('value').to('new_value')
         end
       end
     end

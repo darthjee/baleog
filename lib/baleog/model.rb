@@ -12,12 +12,7 @@ class Baleog
     comparable_by :@hash
 
     def initialize(hash = {})
-      case hash
-      when Hash
-        @hash = hash.stringify_keys
-      when String
-        @hash = JSON.parse(hash)
-      end
+      @hash = hash.stringify_keys
     end
   end
 end

@@ -4,7 +4,7 @@ module Baleog
   class Model
     module ClassMethods
       def build
-        ClassBuilder.build(self) do |klass|
+        OldClassBuilder.build(self) do |klass|
           klass.const_set(:ValueWrapper, ValueWrapper.build)
         end
       end

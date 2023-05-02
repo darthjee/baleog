@@ -6,7 +6,7 @@ module Baleog
       master_caster!
 
       def self.build
-        ClassBuilder.build(self) {}
+        OldClassBuilder.build(self) {}
       end
 
       cast_with(:string, :to_s)

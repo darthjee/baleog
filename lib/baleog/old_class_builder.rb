@@ -3,7 +3,7 @@
 require 'sinclair'
 
 module Baleog
-  class ClassBuilder
+  class OldClassBuilder
     def self.build(base_class, &block)
       new(base_class).build(&block)
     end

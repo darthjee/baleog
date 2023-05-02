@@ -11,12 +11,6 @@ module Baleog
 
     comparable_by :@hash
 
-    def self.build
-      Class.new(self) do |klass|
-        klass.const_set(:ValueWrapper, ValueWrapper.build)
-      end
-    end
-
     def initialize(hash = {})
       @hash = hash.stringify_keys
     end

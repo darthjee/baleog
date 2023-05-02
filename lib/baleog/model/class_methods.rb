@@ -13,6 +13,7 @@ class Baleog
 
       def from(value)
         return unless value
+
         hash = value.is_a?(String) ? JSON.parse(value) : value
 
         return hash.map { |h| from(h) } if hash.is_a?(Array)

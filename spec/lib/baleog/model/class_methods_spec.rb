@@ -40,8 +40,8 @@ describe Baleog::Model::ClassMethods do
   end
 
   describe '#from' do
-    let(:array) { [ hash ] }
-    let(:hash) { { field: value } }
+    let(:array) { [hash] }
+    let(:hash)  { { field: value } }
     let(:value) { :value }
     let(:model_class) do
       Class.new(Baleog::Model) do

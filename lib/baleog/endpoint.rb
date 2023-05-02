@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baleog
+module Baleog
   ###
   #
   # @api private

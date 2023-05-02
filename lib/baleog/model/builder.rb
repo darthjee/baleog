@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baleog
+module Baleog
   class Model
     class Builder < Sinclair
       def add_fields(field_names)

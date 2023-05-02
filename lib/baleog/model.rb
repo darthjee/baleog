@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baleog
+module Baleog
   class Model
     autoload :Builder,      'baleog/model/builder'
     autoload :ClassMethods, 'baleog/model/class_methods'
@@ -10,6 +10,10 @@ class Baleog
     include Sinclair::Comparable
 
     comparable_by :@hash
+
+    def self.build
+      Class.new(self)
+    end
 
     def initialize(hash = {})
       @hash = hash.stringify_keys

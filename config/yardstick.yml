@@ -21,7 +21,10 @@ rules:
     exclude: []
   Summary::Presence:
     enabled: true
-    exclude: []
+    exclude:
+      - Baleog::ClassBuilder#initialize
+      - Baleog::Endpoint#initialize
+      - Baleog::Model#initialize
   Summary::Length:
     enabled: true
     exclude: []

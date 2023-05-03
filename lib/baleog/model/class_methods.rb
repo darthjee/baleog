@@ -35,7 +35,8 @@ module Baleog
       #   @return [Model]
       #
       # @overload self.from(array)
-      #   @param hash [Array<Hash>] Array of hashes containing the attributes for the model
+      #   @param hash [Array<Hash>] Array of hashes containing the
+      #     attributes for the model
       #
       #   @return [Array<Model>]
       #

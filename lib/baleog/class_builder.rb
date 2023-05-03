@@ -23,10 +23,10 @@ module Baleog
 
     # (see ClassBuildable#build)
     def build
-      hooks = after_build
+      classes = nested_classes
 
       new_class.tap do |mod|
-        hooks.each do |klass|
+        classes.each do |klass|
           name = klass.name.gsub(/.*::/, '')
           mod.const_set(name, klass.build)
         end
@@ -35,7 +35,7 @@ module Baleog
 
     # (see ClassBuildable#build_with)
     def build_with(klass)
-      after_build << klass
+      nested_classes << klass
     end
 
     private
@@ -58,8 +58,8 @@ module Baleog
       Class.new(base_class)
     end
 
-    def after_build
-      @after_build ||= Set.new
+    def nested_classes
+      @nested_classes ||= Set.new
     end
 
     def module?

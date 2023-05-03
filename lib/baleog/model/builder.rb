@@ -7,24 +7,14 @@ module Baleog
     #
     # Builder responsible for adding methods to {Model}
     class Builder < Sinclair
-      # Add fields to the model
-      #
-      # @param field_names [Array<Symbol>] fields to be added
-      #
-      # @see Builder#add_field
-      #
-      # @return [Array<Symbol>] added fields
+      # (see Model.fields)
       def add_fields(field_names)
         field_names.each do |field_name|
           add_field(field_name)
         end
       end
 
-      # Add field to the model
-      #
-      # This will add the +reader+ and +setter+
-      #
-      # @return [Array<Sinclair::MethodDefinition>]
+      # (see Model.field)
       def add_field(field_name, key: field_name, cast: nil)
         name = key.to_s
         caster = ValueWrapper.caster_for(cast)

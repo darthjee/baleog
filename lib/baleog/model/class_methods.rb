@@ -7,13 +7,13 @@ module Baleog
     #
     # Class methods for {Model}
     module ClassMethods
-      # (see Builder#add_fields)
+      # (see Model.fields)
       # @see Builder#add_fields
       def fields(*field_names)
         Builder.build(self) { add_fields(field_names) }
       end
 
-      # (see Builder#add_field)
+      # (see Model.field)
       # @see Builder#add_field
       def field(field_name)
         Builder.build(self) { add_field(field_name) }

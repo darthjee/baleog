@@ -3,6 +3,9 @@
 require 'sinclair'
 
 module Baleog
+  # @api private
+  # @author darthjee
+  #
   # Builder responsible to creating a new +Class+ or +Module+
   #
   # Building starts by creating a new module or a new class
@@ -37,6 +40,7 @@ module Baleog
 
     private
 
+    # @private
     # @attr_reader base_class
     #
     # @return [Class]

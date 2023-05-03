@@ -3,9 +3,9 @@
 module Baleog
   class Model
     module ClassMethods
-      def old_build
+      def build
         OldClassBuilder.build(self) do |klass|
-          klass.const_set(:ValueWrapper, ValueWrapper.old_build)
+          klass.const_set(:ValueWrapper, ValueWrapper.build)
         end
       end
 

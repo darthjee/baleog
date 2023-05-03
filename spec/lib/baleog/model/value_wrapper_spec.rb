@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Baleog::Model::ValueWrapper do
   subject(:wrapper_class) { base_model_class::ValueWrapper }
 
-  let(:client_module)    { Baleog.old_build }
+  let(:client_module)    { Baleog.build }
   let(:base_model_class) { client_module::Model }
 
   describe '.cast' do

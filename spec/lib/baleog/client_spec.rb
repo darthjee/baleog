@@ -3,9 +3,9 @@
 require 'spec_helper'
 
 describe Baleog::Client do
-  describe '.old_build' do
+  describe '.build' do
     it do
-      expect(described_class.old_build < described_class).to be_truthy
+      expect(described_class.build < described_class).to be_truthy
     end
   end
 end

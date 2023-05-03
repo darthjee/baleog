@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Baleog::Model do
-  let(:model_class) { described_class.old_build }
+  let(:model_class) { described_class.build }
   let(:hash)        { { key: :value } }
   let(:model)       { model_class.new(hash) }
 

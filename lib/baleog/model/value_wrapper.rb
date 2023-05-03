@@ -5,7 +5,7 @@ module Baleog
     class ValueWrapper < Sinclair::Caster
       master_caster!
 
-      def self.old_build
+      def self.build
         OldClassBuilder.build(self) {}
       end
 

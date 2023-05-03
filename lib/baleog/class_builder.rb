@@ -12,14 +12,15 @@ module Baleog
       hooks = after_build
 
       new_class.tap do |mod|
-        hooks.each do |name, klass|
+        hooks.each do |klass|
+          name = klass.name.gsub(/.*::/, '')
           mod.const_set(name, klass.build)
         end
       end
     end
 
-    def build_with(name, klass)
-      after_build[name] = klass
+    def build_with(klass)
+      after_build << klass
     end
 
     private
@@ -33,7 +34,7 @@ module Baleog
     end
 
     def after_build
-      @after_build ||= {}
+      @after_build ||= Set.new
     end
 
     def module?

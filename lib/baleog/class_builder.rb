@@ -32,6 +32,7 @@ module Baleog
 
     def new_class
       return base_class.new if module?
+
       Class.new(base_class)
     end
 

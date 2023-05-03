@@ -43,6 +43,8 @@ module Baleog
     # @private
     # @attr_reader base_class
     #
+    # Returns the base class to be used in the build
+    #
     # @return [Class]
     attr_reader :base_class
 

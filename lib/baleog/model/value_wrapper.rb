@@ -45,13 +45,13 @@ module Baleog
       #
       # @overload cast_with(class_key, method_name)
       #   @param class_key [Class] class to be used as key.
-      #     This will be used as parent class when the calling {Caster.cast}.
+      #     This will be used as parent class when the calling {ValueWrapper.caster_for}.
       #   @param method_name [Symbol] method to be called on the
       #     value that is being converted.
       #
       # @overload cast_with(class_key, &block)
       #   @param class_key [Class] class to be used as key.
-      #     This will be used as parent class when the calling {Caster.cast}.
+      #     This will be used as parent class when the calling {ValueWrapper.caster_for}
       #   @param block [Proc] block to be used when casting the value.
       #
       # @see Model.field

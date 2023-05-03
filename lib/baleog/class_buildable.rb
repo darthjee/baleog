@@ -22,7 +22,9 @@ module Baleog
 
     private
 
-    attr_reader :class_builder
+    def class_builder
+      @class_builder ||= ClassBuilder.new(self)
+    end
 
     def after_build
       @after_build ||= {}

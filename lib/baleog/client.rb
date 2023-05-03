@@ -3,7 +3,5 @@
 module Baleog
   class Client
     extend ClassBuildable
-
-    build_from(self)
   end
 end

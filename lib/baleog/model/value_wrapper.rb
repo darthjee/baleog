@@ -5,7 +5,6 @@ module Baleog
     class ValueWrapper < Sinclair::Caster
       extend ClassBuildable
 
-      build_from(self)
       master_caster!
 
       cast_with(:string, :to_s)

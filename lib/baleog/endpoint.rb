@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Baleog
-  ###
-  #
   # @api private
   # @author darthjee
   #
@@ -17,14 +15,17 @@ module Baleog
     # @param path [String] Path of the endpoint
     # @param http_method [Symbol] HTTP method to be used.
     #   Available options are defined in {HTTP_METHODS}
+    # @api private
 
     # @method path
+    # @api private
     #
     # Endpoint path where the request will be made
     #
     # @return [String] the endpoint path
 
     # @method http_method
+    # @api private
     #
     # Endpoint http method, or action, that will be used in the endpoint
     #

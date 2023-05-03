@@ -4,6 +4,10 @@ require 'sinclair'
 
 # @api public
 # @author darthjee
+#
+# Module responsible for building clients
+#
+# This module is the entrypoint when building Baelog clients
 module Baleog
   autoload :VERSION, 'baleog/version'
 
@@ -18,4 +22,18 @@ module Baleog
   build_from(Model)
   build_with(Model)
   build_with(Client)
+
+  # @method self.build
+  # @api public
+  #
+  # Builds a new client
+  #
+  # The returned Module will have defined
+  # a client +::Client+, a +::Model+,
+  # a +Model::ValueWrapper+
+  #
+  # @see ClassBuildable#build
+  # @see ClassBuildable#build_from
+  # @see ClassBuildable#build_with
+  # @return [Module] A new module that represents the client
 end

@@ -21,6 +21,7 @@ rules:
     exclude:
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
+      - Baleog::Endpoint#initialize
   Summary::Presence:
     enabled: true
     exclude:

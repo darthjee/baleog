@@ -3,7 +3,17 @@
 require 'sinclair'
 
 module Baleog
+  # Builder responsible to creating a new +Class+ or +Module+
+  #
+  # Building starts by creating a new module or a new class
+  # inheriting from +base_class+
+  #
+  # After building it, new constants are created as new classes
+  # built from other required classes
+  #
+  # @see ClassBuildable
   class ClassBuilder
+    # @param base_class [Class] The base class to be used
     def initialize(base_class)
       @base_class = base_class
     end
@@ -27,8 +37,12 @@ module Baleog
 
     private
 
+    # @attr_reader base_class
+    #
+    # @return [Class]
     attr_reader :base_class
 
+    # Returns a new instance of +Module+ or +Class+
     def new_class
       return base_class.new if module?
 

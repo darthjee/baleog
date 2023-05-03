@@ -11,7 +11,7 @@ module Baleog
     include Sinclair::Comparable
 
     comparable_by :@hash
-    build_with(:ValueWrapper) { ValueWrapper.build }
+    build_with(:ValueWrapper, ValueWrapper)
 
     def initialize(hash = {})
       @hash = hash.stringify_keys

@@ -12,14 +12,14 @@ module Baleog
       hooks = after_build
 
       new_class.tap do |mod|
-        hooks.each do |name, block|
-          mod.const_set(name, block.call)
+        hooks.each do |name, klass|
+          mod.const_set(name, klass.build)
         end
       end
     end
 
-    def build_with(name, &block)
-      after_build[name] = block
+    def build_with(name, klass)
+      after_build[name] = klass
     end
 
     private

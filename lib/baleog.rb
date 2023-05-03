@@ -16,6 +16,6 @@ module Baleog
   extend ClassBuildable
 
   build_from(Model)
-  build_with(:Model)  { Model.build }
-  build_with(:Client) { Client.build }
+  build_with(:Model, Model)
+  build_with(:Client, Client)
 end

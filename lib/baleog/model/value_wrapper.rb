@@ -3,11 +3,9 @@
 module Baleog
   class Model
     class ValueWrapper < Sinclair::Caster
-      master_caster!
+      extend ClassBuildable
 
-      def self.build
-        Class.new(self)
-      end
+      master_caster!
 
       cast_with(:string, :to_s)
       cast_with(String, :to_s)

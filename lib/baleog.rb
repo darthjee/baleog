@@ -7,14 +7,15 @@ require 'sinclair'
 module Baleog
   autoload :VERSION, 'baleog/version'
 
-  autoload :Client,   'baleog/client'
-  autoload :Endpoint, 'baleog/endpoint'
-  autoload :Model,    'baleog/model'
+  autoload :ClassBuildable, 'baleog/class_buildable'
+  autoload :ClassBuilder,   'baleog/class_builder'
+  autoload :Client,         'baleog/client'
+  autoload :Endpoint,       'baleog/endpoint'
+  autoload :Model,          'baleog/model'
 
-  def self.build
-    Module.new.tap do |mod|
-      mod.const_set(:Model, Model.build)
-      mod.const_set(:Client, Client.build)
-    end
-  end
+  extend ClassBuildable
+
+  build_from(Model)
+  build_with(Model)
+  build_with(Client)
 end

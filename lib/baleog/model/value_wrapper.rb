@@ -28,6 +28,32 @@ module Baleog
         klass.new(value)
       end
 
+      # @method self.caster_for
+      # @api public
+      #
+      # Returns an instance of caster for the provided key
+      #
+      # When no registered caster is found one is requested for the parent class.
+      # If no caster is found, then a default caster is returned
+      #
+      # The default caster performs no casting returning the value itself
+      #
+      # @overload caster_for(key)
+      #   @param key [Symbol] key where the caster is registered under
+      #
+      # @overload caster_for(class_key)
+      #   @param class_key [Class] Class to used as key in the casters storage
+      #
+      #   When the +class_key+ does not match the stored key, but matches a superclass,
+      #   the registerd caster is returned.
+      #
+      # @see https://www.rubydoc.info/gems/sinclair/1.16.2/Sinclair/Caster#caster_for-class_method
+      #   Sinclair::Caster.caster_for
+      # @see ValueWrapper.cast_with
+      #
+      # @return [Caster]
+
+
       # @method self.cast_with
       # @api public
       #
@@ -55,6 +81,8 @@ module Baleog
       #   @param block [Proc] block to be used when casting the value.
       #
       # @see Model.field
+      # @see file:///Users/fernandofavini/projects/mine/baleog/doc/Baleog/Model/ValueWrapper.html#cast_with-class_method
+      #   Sinclair::Caster.cast_with
       # @return [ValueWrapper] the registered caster
     end
   end

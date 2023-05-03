@@ -2,7 +2,7 @@
 
 module Baleog
   class Client
-    def self.build
+    def self.old_build
       OldClassBuilder.build(self)
     end
   end

@@ -13,10 +13,10 @@ module Baleog
   autoload :Endpoint,        'baleog/endpoint'
   autoload :Model,           'baleog/model'
 
-  def self.build
+  def self.old_build
     OldClassBuilder.build(Module) do |mod|
-      mod.const_set(:Model, Model.build)
-      mod.const_set(:Client, Client.build)
+      mod.const_set(:Model, Model.old_build)
+      mod.const_set(:Client, Client.old_build)
     end
   end
 end

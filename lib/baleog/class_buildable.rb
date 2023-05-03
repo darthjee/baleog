@@ -2,7 +2,7 @@
 
 module Baleog
   class ClassBuildable
-    def build_with
+    def old_build_with
     end
   end
 end

@@ -13,8 +13,6 @@ module Baleog
     end
 
     def build(&block)
-      block ||= proc {}
-
       new_class.tap(&block)
     end
 

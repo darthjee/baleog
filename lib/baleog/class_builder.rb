@@ -8,6 +8,7 @@ module Baleog
       @base_class = base_class
     end
 
+    # (see ClassBuildable#build)
     def build
       hooks = after_build
 
@@ -19,6 +20,7 @@ module Baleog
       end
     end
 
+    # (see ClassBuildable#build_with)
     def build_with(klass)
       after_build << klass
     end

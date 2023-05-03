@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Baleog
-  ###
-  #
   # @api private
   # @author darthjee
   #

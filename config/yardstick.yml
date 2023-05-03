@@ -18,10 +18,14 @@ rules:
     exclude: []
   ReturnTag:
     enabled: true
-    exclude: []
+    exclude:
+      - Baleog::ClassBuilder#build
+      - Baleog::ClassBuilder#build_with
   Summary::Presence:
     enabled: true
     exclude:
+      - Baleog::ClassBuilder#build
+      - Baleog::ClassBuilder#build_with
       - Baleog::ClassBuilder#initialize
       - Baleog::Endpoint#initialize
       - Baleog::Model#initialize

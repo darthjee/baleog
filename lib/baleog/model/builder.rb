@@ -9,9 +9,9 @@ module Baleog
     class Builder < Sinclair
       # Add fields to the model
       #
-      # @param field_name [Array<Symbol>] fields to be added
+      # @param field_names [Array<Symbol>] fields to be added
       #
-      # @see #add_field
+      # @see Builder#add_field
       #
       # @return [Array<Symbol>] added fields
       def add_fields(field_names)

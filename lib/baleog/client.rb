@@ -2,8 +2,8 @@
 
 module Baleog
   class Client
-    def self.build
-      ClassBuilder.build(self)
-    end
+    extend ClassBuildable
+
+    build_from(self)
   end
 end

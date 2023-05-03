@@ -7,9 +7,12 @@ module Baleog
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods
+    extend ClassBuildable
     include Sinclair::Comparable
 
     comparable_by :@hash
+    build_from(self)
+    build_with(:ValueWrapper) { ValueWrapper.build }
 
     def initialize(hash = {})
       @hash = hash.stringify_keys

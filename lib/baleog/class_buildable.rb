@@ -1,8 +1,31 @@
 # frozen_string_literal: true
 
 module Baleog
-  class ClassBuildable
-    def build_with
+  module ClassBuildable
+    def build_from(base_class)
+      @class_builder = ClassBuilder.new(base_class)
+    end
+
+    def build_with(name, &block)
+      after_build[name] = block
+    end
+
+    def build
+      hooks = after_build
+
+      class_builder.build do |mod|
+        hooks.each do |name, block|
+          mod.const_set(name, block.call)
+        end
+      end
+    end
+
+    private
+
+    attr_reader :class_builder
+
+    def after_build
+      @after_build ||= {}
     end
   end
 end

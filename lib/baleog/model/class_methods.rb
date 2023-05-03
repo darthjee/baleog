@@ -3,12 +3,6 @@
 module Baleog
   class Model
     module ClassMethods
-      def build
-        ClassBuilder.build(self) do |klass|
-          klass.const_set(:ValueWrapper, ValueWrapper.build)
-        end
-      end
-
       def fields(*field_names)
         Builder.build(self) { add_fields(field_names) }
       end

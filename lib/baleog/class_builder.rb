@@ -58,10 +58,16 @@ module Baleog
       Class.new(base_class)
     end
 
+    # List of classes to be built after and nested under the built class
+    #
+    # @return [Set<Class>]
     def nested_classes
       @nested_classes ||= Set.new
     end
 
+    # Checks if {base_class} is a module
+    #
+    # @return [TrueClass,FalseClass]
     def module?
       base_class == Module
     end

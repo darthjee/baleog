@@ -49,6 +49,9 @@ module Baleog
     attr_reader :base_class
 
     # Returns a new instance of +Module+ or +Class+
+    #
+    # @return [Class] When {base_class} is a +Class+
+    # @return [Module] When {base_class} is a +Module+
     def new_class
       return base_class.new if module?
 

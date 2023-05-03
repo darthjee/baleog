@@ -19,7 +19,8 @@ module Baleog
     # Builds a new +Class+ or +Module+
     #
     # @see ClassBuilder#build
-    # @return [Class,Module] a new class or module built
+    # @return [Class] a new class built (when base class is a +Class+)
+    # @return [Module] a new  module built (when base class is a +Module+)
 
     # @method build_with(klass)
     # @api private

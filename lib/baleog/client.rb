@@ -6,7 +6,7 @@ module Baleog
   #
   # Client object built by +Baleog.build+
   #
-  # @see Baleog.build
+  # @see Baleog.build Baelog.build
   class Client
     extend ClassBuildable
   end

@@ -67,7 +67,13 @@ module Baleog
       # Class used to wrap the value form hash
       #
       # @return [Class]
-      delegate :field_name, :key_name, :klass, to: :options
+
+      # Caster for casting the value
+      #
+      # The caster is based in the klasss as key
+      #
+      # @return Sinclair::Caster
+      delegate :field_name, :key_name, :klass, :caster, to: :options
 
       # Adds a the reader for the field
       #
@@ -91,15 +97,6 @@ module Baleog
         add_method("#{field_name}=") do |value|
           self[key] = value
         end
-      end
-
-      # Caster for casting the value
-      #
-      # The caster is based in the klasss as key
-      #
-      # @return Sinclair::Caster
-      def caster
-        ValueWrapper.caster_for(klass)
       end
     end
   end

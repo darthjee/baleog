@@ -16,6 +16,10 @@ module Baleog
       def key_name
         (key || field_name).to_s
       end
+
+      def caster
+        @caster ||= ValueWrapper.caster_for(klass)
+      end
     end
   end
 end

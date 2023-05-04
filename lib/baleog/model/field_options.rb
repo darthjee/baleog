@@ -7,6 +7,9 @@ module Baleog
 
       def klass
         return cast if cast.is_a?(Class)
+
+        cast.constantize
+      rescue NameError
         cast&.to_sym
       end
 

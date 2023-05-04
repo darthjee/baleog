@@ -39,10 +39,10 @@ describe Baleog::Model::FieldOptions do
     end
 
     context 'when cast is a string that represents a class' do
-      let(:options_hash) { { field_name: field_name, cast: 'Baelog::Model' } }
+      let(:options_hash) { { field_name: field_name, cast: 'Baleog::Model' } }
 
-      it 'returns the cast as symbol' do
-        expect(options.klass).to eq(:string)
+      it 'returns the cast as Class' do
+        expect(options.klass).to eq(Baleog::Model)
       end
     end
   end

@@ -16,7 +16,7 @@ module Baleog
       # (see Model.field)
       # @see Builder#add_field
       def field(field_name)
-        Builder.build(self) { add_field(field_name) }
+        Builder.build(self) { add_field(field_name: field_name) }
       end
 
       # Creates a new instance of {Model} initializing it from a value

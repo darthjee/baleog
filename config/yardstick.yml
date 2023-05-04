@@ -1,4 +1,4 @@
-threshold: 96.2
+threshold: 96.9
 require_exact_threshold: false
 rules:
   ApiTag::Presence:
@@ -22,6 +22,7 @@ rules:
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
       - Baleog::Endpoint#initialize
+      - Baleog::Model::FieldBuilder#field_name
   Summary::Presence:
     enabled: true
     exclude:

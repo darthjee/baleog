@@ -15,7 +15,7 @@ describe Baleog::Model::Builder do
     context 'when no options are given' do
       let(:block) do
         proc do
-          builder.add_field :field_name
+          builder.add_field field_name: :field_name
           builder.build
         end
       end
@@ -48,7 +48,7 @@ describe Baleog::Model::Builder do
     context 'when key is provided' do
       let(:block) do
         proc do
-          builder.add_field :field, key: :field_name
+          builder.add_field field_name: :field, key: :field_name
           builder.build
         end
       end
@@ -91,7 +91,7 @@ describe Baleog::Model::Builder do
     context 'when cast is given' do
       let(:block) do
         proc do
-          builder.add_field :field_name, cast: :string
+          builder.add_field field_name: :field_name, cast: :string
           builder.build
         end
       end
@@ -135,7 +135,7 @@ describe Baleog::Model::Builder do
 
       let(:block) do
         proc do
-          builder.add_field :field_name, cast: other_model_class
+          builder.add_field field_name: :field_name, cast: other_model_class
           builder.build
         end
       end

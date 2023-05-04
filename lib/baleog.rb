@@ -19,7 +19,6 @@ module Baleog
 
   extend ClassBuildable
 
-  build_from(Model)
   build_with(Model)
   build_with(Client)
 
@@ -33,7 +32,6 @@ module Baleog
   # a +Model::ValueWrapper+
   #
   # @see ClassBuildable#build
-  # @see ClassBuildable#build_from
   # @see ClassBuildable#build_with
   # @return [Module] A new module that represents the client
 end

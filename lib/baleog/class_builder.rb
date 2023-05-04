@@ -53,7 +53,7 @@ module Baleog
     # @return [Class] When {base_class} is a +Class+
     # @return [Module] When {base_class} is a +Module+
     def new_class
-      return base_class.new if module?
+      return Module.new unless class?
 
       Class.new(base_class)
     end
@@ -68,8 +68,8 @@ module Baleog
     # Checks if {base_class} is a module
     #
     # @return [TrueClass,FalseClass]
-    def module?
-      base_class == Module
+    def class?
+      base_class.is_a?(Class)
     end
   end
 end

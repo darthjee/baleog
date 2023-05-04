@@ -13,12 +13,21 @@ module Baleog
         :builder, :field_name, :caster, :key, :klass, writter: false
       )
 
+      # (see #add_method)
+      #
+      # @overload self.add_methods(builder:, field_name:, key:, caster:, klass:)
+      #   @param builder [Model::Builder] Builder that will receive the
+      #     methods definition
+      #   @param field_name [Symbol] name of the method/attribute
+      #   @param key [String] key to be access in the +@hash+
+      #   @param klass [Class,Symbol] Class to be used when wrapping the value
       def self.add_methods(**attributes)
         new(**attributes).add_methods
       end
 
-      delegate :add_method, to: :builder
-
+      # Adds the methods to the builder
+      #
+      # @return [Array<MethodDefinition>]
       def add_methods
         add_reader
         add_writter
@@ -26,6 +35,18 @@ module Baleog
 
       private
 
+      # @method add_method
+      # @api private
+      # @private
+      #
+      # Add a method definition
+      #
+      # @return [Array<MethodDefinition>]
+      delegate :add_method, to: :builder
+
+      # Adds a the reader for the field
+      #
+      # @return [Array<MethodDefinition>]
       def add_reader
         kaster = caster
         key_name = key
@@ -36,6 +57,9 @@ module Baleog
         end
       end
 
+      # Adds a the writter for the field
+      #
+      # @return [Array<MethodDefinition>]
       def add_writter
         key_name = key
 

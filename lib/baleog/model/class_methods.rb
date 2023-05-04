@@ -43,12 +43,10 @@ module Baleog
       # @return [Model]
       def from(value)
         return unless value
+        return from(JSON.parse(value)) if value.is_a?(String)
+        return value.map { |hash| from(hash) } if value.is_a?(Array)
 
-        hash = value.is_a?(String) ? JSON.parse(value) : value
-
-        return hash.map { |h| from(h) } if hash.is_a?(Array)
-
-        new(hash)
+        new(value)
       end
     end
   end

@@ -11,6 +11,7 @@ module Baleog
   class Model
     autoload :Builder,      'baleog/model/builder'
     autoload :ClassMethods, 'baleog/model/class_methods'
+    autoload :FieldBuilder, 'baleog/model/field_builder'
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods
@@ -19,6 +20,7 @@ module Baleog
 
     comparable_by :@hash
     build_with(ValueWrapper)
+    delegate :[], :[]=, to: :@hash
 
     # @method self.fields(field_names)
     # @api public

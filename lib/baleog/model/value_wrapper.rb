@@ -59,7 +59,8 @@ module Baleog
       # @api public
       #
       # Register a new caster to be used on {Model.field}
-      # when passing +cast:+ option
+      #
+      # The caster is used when passing +cast:+ option
       #
       # @overload cast_with(key, method_name)
       #   @param key [Symbol] key where the caster will be store.

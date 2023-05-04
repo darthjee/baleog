@@ -18,7 +18,7 @@ module Baleog
       def add_field(**options)
         FieldBuilder.add_methods(
           builder: self,
-          options_hash: options
+          options: FieldOptions.new(**options)
         )
       end
     end

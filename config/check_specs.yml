@@ -1,2 +1,3 @@
 ignore:
   - lib/baleog/version.rb
+  - lib/baleog/model/field_builder.rb

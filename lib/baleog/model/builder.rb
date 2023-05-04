@@ -15,12 +15,12 @@ module Baleog
       end
 
       # (see Model.field)
-      def add_field(field_name:, key: field_name, cast: nil)
+      def add_field(field_name:, key: nil, cast: nil)
         FieldBuilder.add_methods(
           builder: self,
           options_hash: {
             field_name: field_name,
-            key: key.to_s,
+            key: key,
             cast: cast
           }
         )

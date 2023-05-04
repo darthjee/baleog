@@ -8,6 +8,10 @@ module Baleog
       def klass
         cast
       end
+
+      def key_name
+        (key || field_name).to_s
+      end
     end
   end
 end

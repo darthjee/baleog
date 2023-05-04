@@ -46,18 +46,18 @@ module Baleog
       # @return [Array<MethodDefinition>]
       delegate :add_method, to: :builder
 
-      delegate :field_name, :key, :klass, to: :options
+      delegate :field_name, :key_name, :klass, to: :options
 
       # Adds a the reader for the field
       #
       # @return [Array<MethodDefinition>]
       def add_reader
         kaster = caster
-        key_name = key
+        key = key_name
         klazz = klass
 
         add_method(field_name) do
-          kaster.cast(self[key_name], klass: klazz)
+          kaster.cast(self[key], klass: klazz)
         end
       end
 
@@ -65,10 +65,10 @@ module Baleog
       #
       # @return [Array<MethodDefinition>]
       def add_writter
-        key_name = key
+        key = key_name
 
         add_method("#{field_name}=") do |value|
-          self[key_name] = value
+          self[key] = value
         end
       end
 

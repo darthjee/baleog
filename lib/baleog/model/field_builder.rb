@@ -44,6 +44,29 @@ module Baleog
       # @return [Array<MethodDefinition>]
       delegate :add_method, to: :builder
 
+      # @method field_name
+      # @api private
+      # @private
+      #
+      # Name of the method to be created
+      #
+      # @return [Symbol]
+
+      # @method key_name
+      # @api private
+      # @private
+      #
+      # Key to be used when accessing the value in the hash
+      #
+      # @return [String]
+
+      # @method klass
+      # @api private
+      # @private
+      #
+      # Class used to wrap the value form hash
+      #
+      # @return [Class]
       delegate :field_name, :key_name, :klass, to: :options
 
       # Adds a the reader for the field

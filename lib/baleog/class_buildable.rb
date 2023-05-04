@@ -4,15 +4,6 @@ module Baleog
   # @api private
   # @author darthjee
   module ClassBuildable
-    # Sets the base class when building using {ClassBuilder}
-    #
-    # @param base_class [Class] The base class to be used, by default, +self+
-    #
-    # @return [ClassBuilder]
-    def build_from(base_class)
-      @class_builder = ClassBuilder.new(base_class)
-    end
-
     # @method build
     # @api private
     #

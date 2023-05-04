@@ -14,8 +14,6 @@ describe Baleog::ClassBuildable do
       let(:klass) do
         Module.new do
           extend Baleog::ClassBuildable
-
-          build_from(Module)
         end
       end
 

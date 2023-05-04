@@ -54,7 +54,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect { model.field_name = 'new value' }
-            .to change { model.field_name }
+            .to change(model, :field_name)
             .from(string_hash['field_name'])
             .to('new value')
         end
@@ -90,7 +90,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect { model.field_name = 'new value' }
-            .to change { model.field_name }
+            .to change(model, :field_name)
             .from(string_hash['other_key'])
             .to('new value')
         end
@@ -130,7 +130,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect { model.field_name = new_value }
-            .to change { model.field_name }
+            .to change(model, :field_name)
             .from(string_hash['field_name'].to_i)
             .to(new_value.to_i)
         end
@@ -143,7 +143,7 @@ describe Baleog::Model::ClassMethods do
       let(:new_value)   { Random.rand(4000..5000).to_s }
 
       let(:block) do
-        proc { model_class.field :field_name, cast: "integer" }
+        proc { model_class.field :field_name, cast: 'integer' }
       end
 
       it 'Adds reader' do
@@ -170,7 +170,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect { model.field_name = new_value }
-            .to change { model.field_name }
+            .to change(model, :field_name)
             .from(string_hash['field_name'].to_i)
             .to(new_value.to_i)
         end
@@ -188,7 +188,6 @@ describe Baleog::Model::ClassMethods do
           require 'not_loaded/models/not_loaded_person'
         end
       end
-
 
       it 'Adds reader' do
         expect(&block)
@@ -214,7 +213,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect { model.field_name = new_value }
-            .to change { model.field_name }
+            .to change(model, :field_name)
             .from(NotLoadedPerson.new(string_hash['field_name']))
             .to(NotLoadedPerson.new(new_value))
         end

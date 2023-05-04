@@ -136,6 +136,46 @@ describe Baleog::Model::ClassMethods do
         end
       end
     end
+
+    context 'when cast option is given as "integer"' do
+      let(:value)       { Random.rand(10..1000).to_s }
+      let(:other_value) { Random.rand(2000..3000).to_s }
+      let(:new_value)   { Random.rand(4000..5000).to_s }
+
+      let(:block) do
+        proc { model_class.field :field_name, cast: "integer" }
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the reader is called' do
+        before { block.call }
+
+        it do
+          expect(model.field_name)
+            .to eq(string_hash['field_name'].to_i)
+        end
+      end
+
+      context 'when the writter is called' do
+        before { block.call }
+
+        it do
+          expect { model.field_name = new_value }
+            .to change { model.field_name }
+            .from(string_hash['field_name'].to_i)
+            .to(new_value.to_i)
+        end
+      end
+    end
   end
 
   describe '#fields' do

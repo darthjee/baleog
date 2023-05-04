@@ -79,12 +79,10 @@ module Baleog
       #
       # @return [Array<MethodDefinition>]
       def add_reader
-        kaster = caster
-        key = key_name
-        klazz = klass
+        opts = options
 
         add_method(field_name) do
-          kaster.cast(self[key], klass: klazz)
+          opts.caster.cast(self[opts.key_name], klass: opts.klass)
         end
       end
 
@@ -92,10 +90,10 @@ module Baleog
       #
       # @return [Array<MethodDefinition>]
       def add_writter
-        key = key_name
+        opts = options
 
         add_method("#{field_name}=") do |value|
-          self[key] = value
+          self[opts.key_name] = value
         end
       end
     end

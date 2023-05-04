@@ -2,6 +2,12 @@
 
 module Baleog
   class Model
+    # @api private
+    # @author darthjee
+    #
+    # Class responsible for building methods for each field
+    #
+    # Both the +reader+ and the +writter+ are added
     class FieldBuilder < Sinclair::Model
       initialize_with(
         :builder, :field_name, :caster, :key, :klass, writter: false

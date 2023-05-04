@@ -51,29 +51,7 @@ module Baleog
       # Name of the method to be created
       #
       # @return [Symbol]
-
-      # @method key_name
-      # @api private
-      # @private
-      #
-      # Key to be used when accessing the value in the hash
-      #
-      # @return [String]
-
-      # @method klass
-      # @api private
-      # @private
-      #
-      # Class used to wrap the value form hash
-      #
-      # @return [Class]
-
-      # Caster for casting the value
-      #
-      # The caster is based in the klasss as key
-      #
-      # @return Sinclair::Caster
-      delegate :field_name, :key_name, :klass, :caster, to: :options
+      delegate :field_name, to: :options
 
       # Adds a the reader for the field
       #

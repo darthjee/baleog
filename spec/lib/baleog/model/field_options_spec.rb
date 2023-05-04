@@ -46,4 +46,28 @@ describe Baleog::Model::FieldOptions do
       end
     end
   end
+
+  describe '#key_name' do
+    context 'when only field name is given' do
+      let(:options_hash) { { field_name: field_name } }
+
+      it { expect(options.key_name).to eq(field_name.to_s) }
+    end
+
+    context 'when key is a symbol' do
+      let(:options_hash) { { field_name: field_name, key: :some_key } }
+
+      it 'returns the key in string' do
+        expect(options.key_name).to eq('some_key')
+      end
+    end
+
+    context 'when key is a string' do
+      let(:options_hash) { { field_name: field_name, key: 'some_key' } }
+
+      it 'returns the key' do
+        expect(options.key_name).to eq('some_key')
+      end
+    end
+  end
 end

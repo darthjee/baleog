@@ -40,16 +40,14 @@ module Baleog
       # When cast is a Symbol, the symbol is returned
       #
       # When cast is a String
-      #   - If it represents a class, the class is returned
-      #   - If it does not represent a class, a symbol is returned
+      # - If it represents a class, the class is returned
+      # - If it does not represent a class, a symbol is returned
       #
       # @return [Class] returned when cast is a class
       # @return [Class] returned when cast is a string that represents a class
       # @return [Symbol]
       def klass
-        return @klass if instance_variable_defined?(:@klass)
-
-        @klass = infer_klass
+        @klass ||= infer_klass
       end
 
       # Key to be used when accessing the value in the hash
@@ -78,6 +76,7 @@ module Baleog
       # @return [Class] returned when cast is a string that represents a class
       # @return [Symbol]
       def infer_klass
+        return cast unless cast
         return cast if cast.is_a?(Class)
 
         cast.constantize

@@ -176,6 +176,46 @@ describe Baleog::Model::ClassMethods do
         end
       end
     end
+
+    context 'when cast option is given as a Model class' do
+      let(:value)       { { name: 'The name', age: '23' } }
+      let(:other_value) { { name: 'Other name', age: '55' } }
+      let(:new_value)   { { name: 'New name', age: '44' } }
+
+      let(:block) do
+        proc { model_class.field :field_name, cast: Person }
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the reader is called' do
+        before { block.call }
+
+        it do
+          expect(model.field_name)
+            .to eq(Person.new(string_hash['field_name']))
+        end
+      end
+
+      context 'when the writter is called' do
+        before { block.call }
+
+        it do
+          expect { model.field_name = new_value }
+            .to change { model.field_name }
+            .from(Person.new(string_hash['field_name']))
+            .to(Person.new(new_value))
+        end
+      end
+    end
   end
 
   describe '#fields' do

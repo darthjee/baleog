@@ -3,7 +3,9 @@
 module Baleog
   class Model
     class FieldBuilder < Sinclair::Model
-      initialize_with(*%i[builder field_name caster key klass], writter: false)
+      initialize_with(
+        :builder, :field_name, :caster, :key, :klass, writter: false
+      )
 
       def self.add_methods(**attributes)
         new(**attributes).add_methods
@@ -24,7 +26,7 @@ module Baleog
         klazz = klass
 
         add_method(field_name) do
-          kaster.cast(@hash[key_name], klass: klazz)
+          kaster.cast(self[key_name], klass: klazz)
         end
       end
 
@@ -32,7 +34,7 @@ module Baleog
         key_name = key
 
         add_method("#{field_name}=") do |value|
-          @hash[key_name] = value
+          self[key_name] = value
         end
       end
     end

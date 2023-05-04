@@ -20,6 +20,7 @@ module Baleog
 
     comparable_by :@hash
     build_with(ValueWrapper)
+    delegate :[], :[]=, to: :@hash
 
     # @method self.fields(field_names)
     # @api public

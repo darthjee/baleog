@@ -16,13 +16,10 @@ module Baleog
 
       # (see Model.field)
       def add_field(field_name, key: field_name, cast: nil)
-        caster = ValueWrapper.caster_for(cast)
-
         FieldBuilder.add_methods(
           builder: self,
           field_name: field_name,
           key: key.to_s,
-          caster: caster,
           klass: cast
         )
       end

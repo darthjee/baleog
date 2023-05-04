@@ -10,7 +10,7 @@ module Baleog
     # Both the +reader+ and the +writter+ are added
     class FieldBuilder < Sinclair::Model
       initialize_with(
-        :builder, :field_name, :caster, :key, :klass, writter: false
+        :builder, :field_name, :key, :klass, writter: false
       )
 
       # (see #add_method)
@@ -70,6 +70,15 @@ module Baleog
         add_method("#{field_name}=") do |value|
           self[key_name] = value
         end
+      end
+
+      # Caster for casting the value
+      #
+      # The caster is based in the klasss as key
+      #
+      # @return Sinclair::Caster
+      def caster
+        ValueWrapper.caster_for(klass)
       end
     end
   end

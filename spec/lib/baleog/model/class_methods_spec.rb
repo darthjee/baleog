@@ -3,7 +3,15 @@
 require 'spec_helper'
 
 describe Baleog::Model::ClassMethods do
-  let(:model_class) { Class.new(Baleog::Model) }
+  let(:model_class)      { Class.new(base_model_class) }
+  let(:base_model_class) { Baleog::Model.build }
+  let(:model)            { model_class.new(string_hash) }
+  let(:value)            { SecureRandom.hex(10) }
+  let(:other_value)      { SecureRandom.hex(16) }
+  let(:string_hash)      { JSON.parse(hash.to_json) }
+  let(:hash) do
+    { field_name: value, other_key: other_value }
+  end
 
   describe '#build' do
     it do
@@ -17,14 +25,76 @@ describe Baleog::Model::ClassMethods do
   end
 
   describe '#field' do
-    it 'Adds reader' do
-      expect { model_class.field :field_name }
-        .to add_method(:field_name).to(model_class)
+    context 'when no options are give' do
+      let(:block) do
+        proc { model_class.field :field_name }
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the reader is called' do
+        before { block.call }
+
+        it do
+          expect(model.field_name)
+            .to eq(string_hash['field_name'])
+        end
+      end
+
+      context 'when the writter is called' do
+        before { block.call }
+
+        it do
+          expect { model.field_name = 'new value' }
+            .to change { model.field_name }
+            .from(string_hash['field_name'])
+            .to('new value')
+        end
+      end
     end
 
-    it 'Adds writter' do
-      expect { model_class.field :field_name }
-        .to add_method(:field_name=).to(model_class)
+    context 'when key option is given' do
+      let(:block) do
+        proc { model_class.field :field_name, key: :other_key }
+      end
+
+      it 'Adds reader' do
+        expect(&block)
+          .to add_method(:field_name).to(model_class)
+      end
+
+      it 'Adds writter' do
+        expect(&block)
+          .to add_method(:field_name=).to(model_class)
+      end
+
+      context 'when the reader is called' do
+        before { block.call }
+
+        it do
+          expect(model.field_name)
+            .to eq(string_hash['other_key'])
+        end
+      end
+
+      context 'when the writter is called' do
+        before { block.call }
+
+        it do
+          expect { model.field_name = 'new value' }
+            .to change { model.field_name }
+            .from(string_hash['other_key'])
+            .to('new value')
+        end
+      end
     end
   end
 

@@ -183,8 +183,12 @@ describe Baleog::Model::ClassMethods do
       let(:new_value)   { { name: 'New name', age: '44' } }
 
       let(:block) do
-        proc { model_class.field :field_name, cast: Person }
+        proc do
+          model_class.field :field_name, cast: 'NotLoadedPerson'
+          require 'not_loaded/models/not_loaded_person'
+        end
       end
+
 
       it 'Adds reader' do
         expect(&block)
@@ -201,7 +205,7 @@ describe Baleog::Model::ClassMethods do
 
         it do
           expect(model.field_name)
-            .to eq(Person.new(string_hash['field_name']))
+            .to eq(NotLoadedPerson.new(string_hash['field_name']))
         end
       end
 
@@ -211,8 +215,8 @@ describe Baleog::Model::ClassMethods do
         it do
           expect { model.field_name = new_value }
             .to change { model.field_name }
-            .from(Person.new(string_hash['field_name']))
-            .to(Person.new(new_value))
+            .from(NotLoadedPerson.new(string_hash['field_name']))
+            .to(NotLoadedPerson.new(new_value))
         end
       end
     end

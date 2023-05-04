@@ -6,7 +6,8 @@ module Baleog
       with_options(:field_name, :key, :cast)
 
       def klass
-        cast
+        return cast if cast.is_a?(Class)
+        cast&.to_sym
       end
 
       def key_name

@@ -19,12 +19,14 @@ module Baleog
       # @return [Symbol]
 
       # @method key
+      # @api private
       #
       # Custom key to be used when accessing the +@hash+
       #
       # @return [Symbol,String]
 
       # @method cast
+      # @api private
       #
       # Option for casting the value
       #

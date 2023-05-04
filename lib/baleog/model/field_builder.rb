@@ -48,7 +48,7 @@ module Baleog
       # @api private
       # @private
       #
-      # (see FieldOptions#field_name)
+      # (see Baleog::Model::FieldOptions#field_name)
       delegate :field_name, to: :options
 
       # Adds a the reader for the field

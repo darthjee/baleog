@@ -22,6 +22,7 @@ rules:
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
       - Baleog::Endpoint#initialize
+      - Baleog::Model::FieldBuilder#field_name
   Summary::Presence:
     enabled: true
     exclude:

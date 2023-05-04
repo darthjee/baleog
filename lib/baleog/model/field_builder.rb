@@ -48,9 +48,7 @@ module Baleog
       # @api private
       # @private
       #
-      # Name of the method to be created
-      #
-      # @return [Symbol]
+      # (see FieldOptions#field_name)
       delegate :field_name, to: :options
 
       # Adds a the reader for the field

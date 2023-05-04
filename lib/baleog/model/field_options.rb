@@ -4,8 +4,32 @@ module Baleog
   class Model
     # @api private
     # @author darthjee
+    #
+    # Options for creating field methods
+    #
+    # @see Baleog::Model.field Baleog::Model.field
     class FieldOptions < Sinclair::Options
       with_options(:field_name, :key, :cast)
+
+      # @method field_name
+      # @api private
+      #
+      # Name of the method to be created
+      #
+      # @return [Symbol]
+
+      # @method key
+      #
+      # Custom key to be used when accessing the +@hash+
+      #
+      # @return [Symbol,String]
+
+      # @method cast
+      #
+      # Option for casting the value
+      #
+      # @see Baleog::Model::ValueWrapper
+      # @return [ValueWrapper]
 
       # Class used to wrap the value form hash
       #

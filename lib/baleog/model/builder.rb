@@ -18,14 +18,22 @@ module Baleog
       def add_field(field_name, key: field_name, cast: nil)
         name = key.to_s
         caster = ValueWrapper.caster_for(cast)
-        cast_class = cast
 
+        add_reader(field_name, name, caster, cast)
+        add_writter(field_name, name)
+      end
+
+      private
+
+      def add_reader(field_name, key, caster, klass)
         add_method(field_name) do
-          caster.cast(@hash[name], klass: cast_class)
+          caster.cast(@hash[key], klass: klass)
         end
+      end
 
+      def add_writter(field_name, key)
         add_method("#{field_name}=") do |value|
-          @hash[name] = value
+          @hash[key] = value
         end
       end
     end

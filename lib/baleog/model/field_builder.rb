@@ -9,9 +9,7 @@ module Baleog
     #
     # Both the +reader+ and the +writter+ are added
     class FieldBuilder < Sinclair::Model
-      initialize_with(
-        :builder, :field_name, :key, :klass, writter: false
-      )
+      initialize_with(:builder, :options_hash, writter: false)
 
       # (see #add_method)
       #
@@ -48,6 +46,8 @@ module Baleog
       # @return [Array<MethodDefinition>]
       delegate :add_method, to: :builder
 
+      delegate :field_name, :key, :klass, to: :options
+
       # Adds a the reader for the field
       #
       # @return [Array<MethodDefinition>]
@@ -79,6 +79,10 @@ module Baleog
       # @return Sinclair::Caster
       def caster
         ValueWrapper.caster_for(klass)
+      end
+
+      def options
+        FieldOptions.new(options_hash)
       end
     end
   end

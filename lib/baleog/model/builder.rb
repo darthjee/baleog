@@ -18,9 +18,11 @@ module Baleog
       def add_field(field_name:, key: field_name, cast: nil)
         FieldBuilder.add_methods(
           builder: self,
-          field_name: field_name,
-          key: key.to_s,
-          klass: cast
+          options_hash: {
+            field_name: field_name,
+            key: key.to_s,
+            cast: cast
+          }
         )
       end
     end

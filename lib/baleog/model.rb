@@ -12,6 +12,7 @@ module Baleog
     autoload :Builder,      'baleog/model/builder'
     autoload :ClassMethods, 'baleog/model/class_methods'
     autoload :FieldBuilder, 'baleog/model/field_builder'
+    autoload :FieldOptions, 'baleog/model/field_options'
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods

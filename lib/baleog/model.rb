@@ -10,6 +10,7 @@ module Baleog
   # fields using class methods
   class Model
     autoload :Builder,      'baleog/model/builder'
+    autoload :FieldBuilder, 'baleog/model/field_builder'
     autoload :ClassMethods, 'baleog/model/class_methods'
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 

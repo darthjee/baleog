@@ -15,12 +15,10 @@ module Baleog
       #
       # Adds the methods to the builder
       #
-      # @overload self.add_methods(builder:, field_name:, key:, caster:, klass:)
+      # @overload self.add_methods(builder:, options:)
       #   @param builder [Model::Builder] Builder that will receive the
       #     methods definition
-      #   @param field_name [Symbol] name of the method/attribute
-      #   @param key [String] key to be access in the +@hash+
-      #   @param klass [Class,Symbol] Class to be used when wrapping the value
+      #   @param options [FieldOptions] field accessing options
       #
       # @return [Array<MethodDefinition>]
       def self.add_methods(**attributes)

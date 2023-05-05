@@ -47,7 +47,7 @@ module Baleog
 
     # @param hash [Hash] hash from request or response
     def initialize(hash = {})
-      @hash = hash.stringify_keys
+      @hash = hash.stringify_keys!
     end
   end
 end

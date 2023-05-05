@@ -26,11 +26,10 @@ describe Baleog::Request do
   end
 
   describe '#call' do
-    let(:url) do
-      "#{base_url}#{path}"
-    end
+    let(:url) { "#{base_url}#{http_path}" }
+
     let!(:http_request) do
-      stub_request(http_method, http_path)
+      stub_request(http_method, url)
         .to_return(status: response_status, body: response_body, headers: {})
     end
 

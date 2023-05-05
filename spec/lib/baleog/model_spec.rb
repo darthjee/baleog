@@ -171,7 +171,7 @@ describe Baleog::Model do
     end
 
     context 'when a nested class field is updated' do
-      let(:new_street)  { 'New Street' }
+      let(:new_street) { 'New Street' }
       let(:changed_hash) do
         { address: { street: new_street, number: address_number } }
       end

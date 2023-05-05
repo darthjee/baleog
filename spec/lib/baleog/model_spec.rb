@@ -4,7 +4,8 @@ require 'spec_helper'
 
 describe Baleog::Model do
   let(:model_class) { Class.new(described_class) }
-  let(:hash)        { { key: :value } }
+  let(:hash)        { { key: value } }
+  let(:value)       { :value }
   let(:model)       { model_class.new(hash) }
 
   describe '#initialize' do
@@ -51,6 +52,42 @@ describe Baleog::Model do
         let(:model) { model_class.new }
 
         it { expect(model.key).to be_nil }
+      end
+    end
+
+    context 'when casting as a class is given as option' do
+      let(:inner_class) do
+        Class.new(described_class) do
+          field :name
+        end
+      end
+
+      before do
+        model_class.field(:key, cast: inner_class)
+      end
+
+      context 'when nested value is a hash' do
+        let(:value) { { name: 'Some Name' } }
+
+        it 'returns the value wrapped in the inner class' do
+          expect(model.key).to eq(inner_class.new(value))
+        end
+      end
+
+      context 'when nested value is an array' do
+        let(:value) { [{ name: 'Some Name' }] }
+
+        it 'returns an array with the value wrapped in the inner class' do
+          expect(model.key).to eq([inner_class.new(value.first)])
+        end
+      end
+
+      context 'when nested value is nil' do
+        let(:value) { nil }
+
+        it do
+          expect(model.key).to be_nil
+        end
       end
     end
   end

@@ -23,7 +23,7 @@ module Baleog
       cast_with(Float, :to_f)
 
       cast_with(Baleog::Model) do |value, klass:|
-        klass.new(value)
+        klass.from(value)
       end
 
       # @method self.caster_for

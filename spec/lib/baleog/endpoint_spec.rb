@@ -7,11 +7,16 @@ describe Baleog::Endpoint do
 
   let(:path)        { SecureRandom.hex(10) }
   let(:http_method) { described_class::HTTP_METHODS.sample }
+  let(:base_url)    { 'http://some_service.com' }
+  let(:service) do
+    Baleog::Service.new(base_url: base_url)
+  end
 
   let(:attributes) do
     {
       path: path,
-      http_method: http_method
+      http_method: http_method,
+      service: service
     }.compact
   end
 

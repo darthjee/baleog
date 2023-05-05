@@ -106,6 +106,7 @@ describe Baleog::Model do
   describe '.as_json' do
     let(:stringified_hash) { JSON.parse(hash.to_json) }
     let(:changed_hash)     { {} }
+    let(:address_number)   { '10 A' }
     let(:expected_hash) do
       stringified_hash.merge(JSON.parse(changed_hash.to_json))
     end
@@ -114,7 +115,7 @@ describe Baleog::Model do
         name: 'Person name',
         address: {
           street: 'Some street',
-          number: '10 A'
+          number: address_number
         },
         info: {
           tag: 'tag'
@@ -169,6 +170,21 @@ describe Baleog::Model do
       end
     end
 
+    context 'when a nested class field is updated' do
+      let(:new_street)  { 'New Street' }
+      let(:changed_hash) do
+        { address: { street: new_street, number: address_number } }
+      end
+
+      before do
+        model.address.street = new_street
+      end
+
+      it 'returns the hash with the new calue' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+
     context 'when a class wrapped field is updated with an object' do
       let(:new_address) { { street: 'New street', number: 'new number' } }
       let(:changed_hash) do
@@ -177,6 +193,21 @@ describe Baleog::Model do
 
       before do
         model.address = address_class.new(new_address)
+      end
+
+      it 'returns the hash with the new calue' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+
+    context 'when a json field is updated' do
+      let(:new_info) { { tag: 'new tags' } }
+      let(:changed_hash) do
+        { info: new_info }
+      end
+
+      before do
+        model.info = new_info
       end
 
       it 'returns the hash with the new calue' do

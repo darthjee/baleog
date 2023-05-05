@@ -46,7 +46,7 @@ describe Baleog::Model::Builder do
         it 'writtes the value in the writter' do
           expect { model.field_name = :new_value }
             .to change(model, :field_name)
-            .from(value).to(:new_value)
+            .from(value).to('new_value')
         end
       end
     end
@@ -85,7 +85,7 @@ describe Baleog::Model::Builder do
         it 'writtes the value in the writter' do
           expect { model.field = :new_value }
             .to change(model, :field)
-            .from(value).to(:new_value)
+            .from(value).to('new_value')
         end
       end
     end

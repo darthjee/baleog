@@ -7,6 +7,11 @@ describe Baleog::Model do
   let(:hash)        { { key: value } }
   let(:value)       { :value }
   let(:model)       { model_class.new(hash) }
+  let(:inner_class) do
+    Class.new(described_class) do
+      field :name
+    end
+  end
 
   describe '#initialize' do
     context 'when no argument is given' do
@@ -56,12 +61,6 @@ describe Baleog::Model do
     end
 
     context 'when casting as a class is given as option' do
-      let(:inner_class) do
-        Class.new(described_class) do
-          field :name
-        end
-      end
-
       before do
         model_class.field(:key, cast: inner_class)
       end
@@ -106,7 +105,7 @@ describe Baleog::Model do
         it 'changes the value from the reader' do
           expect { model.key = :new_value }
             .to change(model, :key)
-            .from(:value).to(:new_value)
+            .from(:value).to('new_value')
         end
       end
 
@@ -120,7 +119,7 @@ describe Baleog::Model do
         it 'changes the value from the reader' do
           expect { model.key = :new_value }
             .to change(model, :key)
-            .from(:value).to(:new_value)
+            .from(:value).to('new_value')
         end
       end
 
@@ -134,7 +133,39 @@ describe Baleog::Model do
         it 'changes the value from the reader' do
           expect { model.key = :new_value }
             .to change(model, :key)
-            .from(nil).to(:new_value)
+            .from(nil).to('new_value')
+        end
+      end
+    end
+
+    context 'when casting as a class is given as option' do
+      let(:value) { { name: 'Some Name' } }
+
+      before do
+        model_class.field(:key, cast: inner_class)
+      end
+
+      context 'when passing a hash' do
+        let(:new_value) { { name: 'New Name' } }
+
+        it 'Updates the inner model' do
+          expect { model.key = new_value }
+            .to change(model, :key)
+            .from(inner_class.new(value))
+            .to(inner_class.new(new_value))
+        end
+      end
+
+      context 'when passing an object' do
+        let(:new_value) do
+          inner_class.new({ name: 'New Name' })
+        end
+
+        it 'Updates the inner model' do
+          expect { model.key = new_value }
+            .to change(model, :key)
+            .from(inner_class.new(value))
+            .to(new_value)
         end
       end
     end

@@ -6,7 +6,7 @@ module Baleog
   #
   # This represents an endpoint to a service
   class Endpoint < Sinclair::Model
-    initialize_with :path, { http_method: :get }, **{}
+    initialize_with :path, :service, { http_method: :get }, **{}
 
     # Available HTTP methods for an endpoint
     HTTP_METHODS = %i[get post delete patch].freeze

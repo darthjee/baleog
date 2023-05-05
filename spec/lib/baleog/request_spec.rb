@@ -15,10 +15,20 @@ describe Baleog::Request do
   let(:response_body)   { person.to_json }
   let(:response_status) { 200 }
   let(:endpoint) do
-    Baleog::Endpoint.new(http_method: http_method, path: http_path)
+    Baleog::Endpoint.new(
+      http_method: http_method, path: http_path, service: service
+    )
+  end
+
+  let(:base_url) { 'http://some_service.com' }
+  let(:service) do
+    Baleog::Service.new(base_url: base_url)
   end
 
   describe '#call' do
+    let(:url) do
+      "#{base_url}#{path}"
+    end
     let!(:http_request) do
       stub_request(http_method, http_path)
         .to_return(status: response_status, body: response_body, headers: {})

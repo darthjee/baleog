@@ -3,6 +3,10 @@
 require 'faraday'
 
 module Baleog
+  # @api private
+  # @author darthjee
+  #
+  # Class representing a request to be made against an endpoint
   class Request < Sinclair::Model
     initialize_with(:endpoint, { headers: {}, payload: nil }, **{})
 

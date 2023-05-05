@@ -12,13 +12,19 @@ describe Baleog::Model::Builder do
   let(:model)            { model_class.new(hash) }
 
   describe '.add_field' do
-    context 'when no options are given' do
-      let(:block) do
-        proc do
-          builder.add_field field_name: :field_name
-          builder.build
-        end
+    let(:field_name) { :field_name }
+    let(:block) do
+      proc do
+        builder.add_field(
+          field_name: field_name, caster_class: model_class::ValueWrapper,
+          **options
+        )
+        builder.build
       end
+    end
+
+    context 'when no options are given' do
+      let(:options) { {} }
 
       it 'Adds reader' do
         expect(&block)
@@ -46,12 +52,8 @@ describe Baleog::Model::Builder do
     end
 
     context 'when key is provided' do
-      let(:block) do
-        proc do
-          builder.add_field field_name: :field, key: :field_name
-          builder.build
-        end
-      end
+      let(:field_name) { :field }
+      let(:options)    { { key: :field_name } }
 
       it 'Adds reader' do
         expect(&block)
@@ -89,12 +91,7 @@ describe Baleog::Model::Builder do
     end
 
     context 'when cast is given' do
-      let(:block) do
-        proc do
-          builder.add_field field_name: :field_name, cast: :string
-          builder.build
-        end
-      end
+      let(:options) { { cast: :string } }
 
       it 'Adds reader' do
         expect(&block)
@@ -126,17 +123,11 @@ describe Baleog::Model::Builder do
       let(:new_value)      { { key: some_new_value } }
       let(:some_value)     { :some_value }
       let(:some_new_value) { :some_new_value }
+      let(:options)        { { cast: other_model_class } }
 
       let(:other_model_class) do
         Class.new(base_model_class) do
           field :key
-        end
-      end
-
-      let(:block) do
-        proc do
-          builder.add_field field_name: :field_name, cast: other_model_class
-          builder.build
         end
       end
 

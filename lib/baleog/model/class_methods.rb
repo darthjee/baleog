@@ -16,8 +16,14 @@ module Baleog
       # (see Model.field)
       # @see Builder#add_field
       def field(field_name, **options)
+        caster_class = self::ValueWrapper
+
         Builder.build(self) do
-          add_field(field_name: field_name, **options)
+          add_field(
+            field_name: field_name,
+            caster_class: caster_class,
+            **options
+          )
         end
       end
 

@@ -10,8 +10,12 @@ module Baleog
     # Whenever a value is read from +Model@hash+ this is converted
     # based on ValueWrapper rules
     #
+    # One rule states that, if the class of the wrapping is a Baelog::Model,
+    # the value is initalized with {Baleog::Model.from model_class.from}
+    #
     # @see /gems/sinclair/1.16.2/Sinclair/Caster Sinclair::Caster
     # @see ValueWrapper.cast_with
+    # @see Model.for
     class ValueWrapper < Sinclair::Caster
       master_caster!
 

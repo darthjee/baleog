@@ -35,6 +35,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov',          '0.21.2'
   gem.add_development_dependency 'yard',               '0.9.27'
   gem.add_development_dependency 'yardstick',          '0.9.9'
+  gem.add_development_dependency 'webmock',            '3.18.1'
 
   gem.add_runtime_dependency 'sinclair', '>= 1.16.2'
 end

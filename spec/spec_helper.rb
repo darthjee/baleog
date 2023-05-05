@@ -12,6 +12,7 @@ SimpleCov.start 'gem'
 require 'baleog'
 require 'pry-nav'
 require 'securerandom'
+require 'webmock/rspec'
 
 support_files = File.expand_path('spec/support/**/*.rb')
 

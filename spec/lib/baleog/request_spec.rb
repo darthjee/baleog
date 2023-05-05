@@ -7,7 +7,8 @@ describe Baleog::Request do
     described_class.new(endpoint: endpoint)
   end
 
-  let(:person) { Person.new(person_hash) }
+  let(:model_class) { Person }
+  let(:person)      { model_class.new(person_hash) }
   let(:person_hash) { { name: 'Some Name', age: 22 } }
 
   let(:http_method)     { :get }
@@ -16,7 +17,8 @@ describe Baleog::Request do
   let(:response_status) { 200 }
   let(:endpoint) do
     Baleog::Endpoint.new(
-      http_method: http_method, path: http_path, service: service
+      http_method: http_method, path: http_path,
+      service: service, model: model_class
     )
   end
 
@@ -38,6 +40,14 @@ describe Baleog::Request do
         request.call
 
         expect(http_request).to have_been_requested
+      end
+
+      it do
+        expect(request.call).to be_a(model_class)
+      end
+
+      it 'wraps response with the class' do
+        expect(request.call).to eq(person)
       end
     end
   end

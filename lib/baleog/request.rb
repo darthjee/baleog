@@ -9,9 +9,12 @@ module Baleog
     def call
       url = [base_url, path.gsub(/^\//,'')].join('/')
       response = Faraday.get(url)
+
+      return JSON.parse(response.body) unless model
+      model.from(response.body)
     end
 
-    delegate :service, :path, to: :endpoint
+    delegate :service, :path, :model, to: :endpoint
     delegate :base_url, to: :service
   end
 end

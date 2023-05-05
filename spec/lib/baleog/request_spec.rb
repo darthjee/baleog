@@ -43,11 +43,11 @@ describe Baleog::Request do
       end
 
       it do
-        expect(request.call).to be_a(model_class)
+        expect(request.call.object).to be_a(model_class)
       end
 
       it 'wraps response with the class' do
-        expect(request.call).to eq(person)
+        expect(request.call.object).to eq(person)
       end
     end
   end

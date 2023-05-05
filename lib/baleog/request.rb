@@ -12,7 +12,7 @@ module Baleog
 
       return JSON.parse(response.body) unless model
 
-      model.from(response.body)
+      Response.new(response: response, request: self)
     end
 
     delegate :service, :path, :model, to: :endpoint

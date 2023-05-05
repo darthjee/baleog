@@ -38,4 +38,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock',            '3.18.1'
 
   gem.add_runtime_dependency 'sinclair', '>= 1.16.2'
+  gem.add_runtime_dependency 'faraday',  '2.7.4'
 end

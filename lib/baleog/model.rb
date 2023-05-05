@@ -19,7 +19,7 @@ module Baleog
     include Sinclair::Comparable
 
     comparable_by :@hash
-    delegate :[], :[]=, to: :@hash
+    delegate :[], :[]=, :as_hash, :to_hash, to: :@hash
 
     # @method self.fields(field_names)
     # @api public
@@ -45,9 +45,35 @@ module Baleog
     #
     # @return [Array<Sinclair::MethodDefinition>]
 
+    # @method self.from
+    # @api public
+    #
+    # Creates a new instance of {Model} initializing it from a value
+    #
+    # @overload self.from(json)
+    #   @param json [String] JSON to be parsed in a hash before initialization
+    #
+    #   When the json represents an Array, an array is returned
+    #
+    #   @return [Model] Model returned when JSON represents a Hash
+    #   @return [Array<Model>] returned when JSON represents an Array
+    #
+    # @overload self.from(hash)
+    #   @param hash [Hash] Hash containing the attributes for the model
+    #
+    #   @return [Model]
+    #
+    # @overload self.from(array)
+    #   @param hash [Array<Hash>] Array of hashes containing the
+    #     attributes for the model
+    #
+    #   @return [Array<Model>]
+    #
+    # @return [Model]
+
     # @param hash [Hash] hash from request or response
     def initialize(hash = {})
-      @hash = hash.stringify_keys
+      @hash = hash.stringify_keys!
     end
   end
 end

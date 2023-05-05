@@ -69,7 +69,7 @@ module Baleog
         opts = options
 
         add_method("#{field_name}=") do |value|
-          self[opts.key_name] = value
+          self[opts.key_name] = value.as_json
         end
       end
     end

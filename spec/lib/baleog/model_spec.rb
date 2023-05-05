@@ -102,4 +102,86 @@ describe Baleog::Model do
       end
     end
   end
+
+  describe '.as_json' do
+    let(:stringified_hash) { JSON.parse(hash.to_json) }
+    let(:changed_hash)     { {} }
+    let(:expected_hash) do
+      stringified_hash.merge(JSON.parse(changed_hash.to_json))
+    end
+    let(:hash) do
+      {
+        name: 'Person name',
+        address: {
+          street: 'Some street',
+          number: '10 A'
+        },
+        info: {
+          tag: 'tag'
+        }
+      }
+    end
+
+    let(:address_class) do
+      Class.new(described_class) do
+        fields :street, :number
+      end
+    end
+
+    let(:model_class) do
+      address = address_class
+
+      Class.new(described_class) do
+        field :name
+        field :address, cast: address
+        field :info
+      end
+    end
+
+    context 'when nothing was updated' do
+      it 'returns the hash itself' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+
+    context 'when a plain field is updated' do
+      let(:changed_hash) do
+        { name: 'New Name' }
+      end
+
+      before { model.name = 'New Name' }
+
+      it 'returns the hash with the new calue' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+
+    context 'when a class wrapped field is updated with a hash' do
+      let(:new_address) { { street: 'New street', number: 'new number' } }
+      let(:changed_hash) do
+        { address: new_address }
+      end
+
+      before { model.address = new_address }
+
+      it 'returns the hash with the new calue' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+
+    context 'when a class wrapped field is updated with an object' do
+      let(:new_address) { { street: 'New street', number: 'new number' } }
+      let(:changed_hash) do
+        { address: new_address }
+      end
+
+      before do
+        model.address = address_class.new(new_address)
+      end
+
+      it 'returns the hash with the new calue' do
+        expect(model.as_json).to eq(expected_hash)
+      end
+    end
+  end
 end

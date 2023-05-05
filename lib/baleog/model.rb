@@ -19,7 +19,7 @@ module Baleog
     include Sinclair::Comparable
 
     comparable_by :@hash
-    delegate :[], :[]=, to: :@hash
+    delegate :[], :[]=, :as_hash, :to_hash, to: :@hash
 
     # @method self.fields(field_names)
     # @api public

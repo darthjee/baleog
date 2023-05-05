@@ -8,7 +8,7 @@ describe Baleog::Request do
   end
 
   let(:model_class) { Person }
-  let(:person)      { model_class.new(person_hash) }
+  let(:person)      { build(:model_person, **person_hash) }
   let(:person_hash) { { name: 'Some Name', age: 22 } }
 
   let(:http_method)     { :get }

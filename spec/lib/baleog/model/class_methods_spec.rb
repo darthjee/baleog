@@ -4,24 +4,13 @@ require 'spec_helper'
 
 describe Baleog::Model::ClassMethods do
   let(:model_class)      { Class.new(base_model_class) }
-  let(:base_model_class) { Baleog::Model.build }
+  let(:base_model_class) { Class.new(Baleog::Model) }
   let(:model)            { model_class.new(string_hash) }
   let(:value)            { SecureRandom.hex(10) }
   let(:other_value)      { SecureRandom.hex(16) }
   let(:string_hash)      { JSON.parse(hash.to_json) }
   let(:hash) do
     { field_name: value, other_key: other_value }
-  end
-
-  describe '#build' do
-    it do
-      expect(Baleog::Model.build < Baleog::Model).to be_truthy
-    end
-
-    it 'adds a value wrapper' do
-      expect(Baleog::Model.build::ValueWrapper < Baleog::Model::ValueWrapper)
-        .to be_truthy
-    end
   end
 
   describe '#field' do

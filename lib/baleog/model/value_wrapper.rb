@@ -13,8 +13,6 @@ module Baleog
     # @see /gems/sinclair/1.16.2/Sinclair/Caster Sinclair::Caster
     # @see ValueWrapper.cast_with
     class ValueWrapper < Sinclair::Caster
-      extend ClassBuildable
-
       master_caster!
 
       cast_with(:string, :to_s)

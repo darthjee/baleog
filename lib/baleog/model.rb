@@ -16,11 +16,9 @@ module Baleog
     autoload :ValueWrapper, 'baleog/model/value_wrapper'
 
     extend ClassMethods
-    extend ClassBuildable
     include Sinclair::Comparable
 
     comparable_by :@hash
-    build_with(ValueWrapper)
     delegate :[], :[]=, to: :@hash
 
     # @method self.fields(field_names)

@@ -3,19 +3,5 @@
 require 'spec_helper'
 
 describe Baleog do
-  describe '.build' do
-    it do
-      expect(described_class.build).to be_a(Module)
-    end
-
-    it 'add base model' do
-      expect(described_class.build::Model < described_class::Model)
-        .to be_truthy
-    end
-
-    it 'add client' do
-      expect(described_class.build::Client < described_class::Client)
-        .to be_truthy
-    end
-  end
+  xit 'requires some spec'
 end

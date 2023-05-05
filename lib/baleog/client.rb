@@ -4,10 +4,7 @@ module Baleog
   # @api public
   # @author darthjee
   #
-  # Client object built by +Baleog.build+
-  #
-  # @see Baleog.build Baelog.build
+  # Client object with all the endpoints
   class Client
-    extend ClassBuildable
   end
 end

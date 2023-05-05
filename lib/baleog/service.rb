@@ -2,6 +2,6 @@
 
 module Baleog
   class Service < Sinclair::Model
-    initialize_with(base_url:)
+    initialize_with(:base_url)
   end
 end

@@ -11,6 +11,14 @@ module Baleog
     class FieldOptions < Sinclair::Options
       with_options(:field_name, :key, :cast, :caster_class)
 
+      # @method caster_class
+      # @api private
+      #
+      # Caster class used when casting a value from the field return
+      #
+      # @see Baleog::Model::ValueWrapper
+      # @return Baleog::Model::ValueWrapper
+
       # @method field_name
       # @api private
       #

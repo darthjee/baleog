@@ -13,7 +13,6 @@ describe Baleog::Request do
 
   let(:http_method)     { :get }
   let(:http_path)       { '/some_path' }
-  let(:response_body)   { person.to_json }
   let(:response_status) { 200 }
   let(:endpoint) do
     Baleog::Endpoint.new(
@@ -31,8 +30,11 @@ describe Baleog::Request do
     let(:url) { "#{base_url}#{http_path}" }
 
     let!(:http_request) do
-      stub_request(http_method, url)
-        .to_return(status: response_status, body: response_body, headers: {})
+      create(
+        :http_request,
+        base_url: base_url, path: http_path, response: person,
+        http_method: http_method, response_status: response_status
+      ) 
     end
 
     context 'when it is a get request' do

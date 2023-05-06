@@ -31,7 +31,8 @@ describe Baleog::Request do
 
     let!(:http_request) do
       create(
-        :http_request,
+        :endpoint_request,
+        endpoint: endpoint,
         base_url: base_url, path: http_path, response: person,
         http_method: http_method, response_status: response_status
       )

@@ -1,8 +1,7 @@
-
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :http_request, class: "WebMock::RequestStub" do
+  factory :http_request, class: 'WebMock::RequestStub' do
     skip_create
 
     initialize_with do
@@ -19,16 +18,16 @@ FactoryBot.define do
 
       url do
         [
-          base_url.gsub(/\/$/, ''),
-          path.gsub(/^\//, '')
+          base_url.gsub(%r{/$}, ''),
+          path.gsub(%r{^/}, '')
         ].join('/')
       end
 
       base_headers do
         {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v2.7.4',
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent' => 'Faraday v2.7.4'
         }
       end
 

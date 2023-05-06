@@ -34,7 +34,7 @@ describe Baleog::Request do
         :http_request,
         base_url: base_url, path: http_path, response: person,
         http_method: http_method, response_status: response_status
-      ) 
+      )
     end
 
     context 'when it is a get request' do

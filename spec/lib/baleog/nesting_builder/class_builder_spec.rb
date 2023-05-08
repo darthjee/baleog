@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Baleog::ClassBuilder do
+describe Baleog::NestingBuilder::ClassBuilder do
   describe '.build' do
     let(:klass) { Class.new(NestingClass) }
 

@@ -11,5 +11,11 @@ module Baleog
     autoload :Request,  'baleog/client/request'
     autoload :Response, 'baleog/client/response'
     autoload :Service,  'baleog/client/service'
+
+    class << self
+      def configure(&block)
+        ClassBuilder.build(self, :Model)
+      end
+    end
   end
 end

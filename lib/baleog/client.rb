@@ -6,6 +6,8 @@ module Baleog
   #
   # Client object with all the endpoints
   class Client
+    extend NestingBuilder
+
     autoload :Endpoint, 'baleog/client/endpoint'
     autoload :Model,    'baleog/client/model'
     autoload :Request,  'baleog/client/request'
@@ -13,11 +15,6 @@ module Baleog
     autoload :Service,  'baleog/client/service'
 
     class << self
-      def build_nested_classes
-        ClassBuilder.build(self, :Model)
-        ClassBuilder.build(self::Model, :ValueWrapper)
-      end
-
       def configure
         build_nested_classes
       end

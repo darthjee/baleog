@@ -10,7 +10,7 @@ FactoryBot.define do
 
     endpoint_class { Baleog::Endpoint }
 
-  endpoint_attributes do
+    endpoint_attributes do
       {
         service: service,
         path: path,

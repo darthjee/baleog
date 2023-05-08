@@ -33,8 +33,8 @@ describe Baleog::Request do
       create(
         :endpoint_request,
         endpoint: endpoint,
-        base_url: base_url, path: http_path, response: person,
-        http_method: http_method, response_status: response_status
+        response: person,
+        response_status: response_status
       )
     end
 

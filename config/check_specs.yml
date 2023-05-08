@@ -2,4 +2,5 @@ ignore:
   - lib/baleog/client/model/field_builder.rb
   - lib/baleog/client/response.rb
   - lib/baleog/client/service.rb
+  - lib/baleog/nesting_builder.rb
   - lib/baleog/version.rb

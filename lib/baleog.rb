@@ -11,5 +11,6 @@ require 'sinclair'
 module Baleog
   autoload :VERSION, 'baleog/version'
 
-  autoload :Client, 'baleog/client'
+  autoload :Client,         'baleog/client'
+  autoload :NestingBuilder, 'baleog/nesting_builder'
 end

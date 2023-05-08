@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Baleog
-  class ClassBuilder
+  module ClassBuilder
     def self.build(parent_module, name)
       code = <<-RUBY
         proc do |parent_module|
@@ -10,9 +10,7 @@ module Baleog
         end
       RUBY
 
-      prc = eval(code)
-
-      prc.call(parent_module)
+      Object.instance_eval(code).call(parent_module)
     end
   end
 end

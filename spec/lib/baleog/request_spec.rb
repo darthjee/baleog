@@ -4,35 +4,21 @@ require 'spec_helper'
 
 describe Baleog::Request do
   subject(:request) do
-    described_class.new(endpoint: endpoint)
+    create(:baleog_request, endpoint: { model: model_class })
   end
 
-  let(:model_class) { Person }
-  let(:person)      { model_class.new(person_hash) }
-  let(:person_hash) { { name: 'Some Name', age: 22 } }
-
-  let(:http_method)     { :get }
-  let(:http_path)       { '/some_path' }
-  let(:response_body)   { person.to_json }
+  let(:model_class)     { person.class }
+  let(:person)          { build(:model_person) }
   let(:response_status) { 200 }
-  let(:endpoint) do
-    Baleog::Endpoint.new(
-      http_method: http_method, path: http_path,
-      service: service, model: model_class
-    )
-  end
-
-  let(:base_url) { 'http://some_service.com' }
-  let(:service) do
-    Baleog::Service.new(base_url: base_url)
-  end
 
   describe '#call' do
-    let(:url) { "#{base_url}#{http_path}" }
-
     let!(:http_request) do
-      stub_request(http_method, url)
-        .to_return(status: response_status, body: response_body, headers: {})
+      create(
+        :request_request,
+        request: request,
+        response: person,
+        response_status: response_status
+      )
     end
 
     context 'when it is a get request' do

@@ -13,6 +13,7 @@ require 'baleog'
 require 'pry-nav'
 require 'securerandom'
 require 'webmock/rspec'
+require 'factory_bot'
 
 support_files = File.expand_path('spec/support/**/*.rb')
 

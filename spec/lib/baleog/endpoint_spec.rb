@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Baleog::Endpoint do
-  subject(:endpoint) { described_class.new(**attributes) }
+  subject(:endpoint) { create(:baleog_endpoint, **attributes) }
 
   let(:path)        { SecureRandom.hex(10) }
   let(:http_method) { described_class::HTTP_METHODS.sample }

@@ -8,7 +8,7 @@ FactoryBot.define do
       request_class.new(**request_attributes)
     end
 
-    request_class { Baleog::Endpoint }
+    request_class { Baleog::Request }
 
     request_attributes do
       {

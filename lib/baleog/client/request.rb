@@ -13,14 +13,14 @@ module Baleog
 
       def call
         url = [base_url, path.gsub(%r{^/}, '')].join('/')
-        response = Faraday.get(url)
+        response = Faraday.public_send(http_method, url)
 
         return JSON.parse(response.body) unless model
 
         Response.new(response: response, request: self)
       end
 
-      delegate :service, :path, :model, to: :endpoint
+      delegate :service, :path, :model, :http_method, to: :endpoint
       delegate :base_url, to: :service
     end
   end

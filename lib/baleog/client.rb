@@ -8,6 +8,7 @@ module Baleog
   class Client
     autoload :Endpoint, 'baleog/client/endpoint'
     autoload :Model,    'baleog/client/model'
+    autoload :Request,  'baleog/client/request'
     autoload :Service,  'baleog/client/service'
   end
 end

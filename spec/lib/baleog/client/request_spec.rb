@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Baleog::Request do
+describe Baleog::Client::Request do
   subject(:request) do
     create(:baleog_request, endpoint: { model: model_class })
   end

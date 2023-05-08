@@ -12,6 +12,5 @@ module Baleog
   autoload :VERSION, 'baleog/version'
 
   autoload :Client,         'baleog/client'
-  autoload :Request,        'baleog/request'
   autoload :Response,       'baleog/response'
 end

@@ -6,6 +6,7 @@ module Baleog
   #
   # Client object with all the endpoints
   class Client
+   autoload :Endpoint, 'baleog/client/endpoint'
     autoload :Service, 'baleog/client/service'
   end
 end

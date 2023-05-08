@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Baleog::Endpoint do
+describe Baleog::Client::Endpoint do
   subject(:endpoint) { create(:baleog_endpoint, **attributes) }
 
   let(:path)        { SecureRandom.hex(10) }

@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-describe Baleog::Model::ClassMethods do
+describe Baleog::Client::Model::ClassMethods do
   let(:model_class)      { Class.new(base_model_class) }
-  let(:base_model_class) { Class.new(Baleog::Model) }
+  let(:base_model_class) { Class.new(Baleog::Client::Model) }
   let(:model)            { model_class.new(string_hash) }
   let(:value)            { SecureRandom.hex(10) }
   let(:other_value)      { SecureRandom.hex(16) }
@@ -237,7 +237,7 @@ describe Baleog::Model::ClassMethods do
     let(:hash)  { { field: value } }
     let(:value) { :value }
     let(:model_class) do
-      Class.new(Baleog::Model) do
+      Class.new(Baleog::Client::Model) do
         field :field
       end
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryBot.define do 
+FactoryBot.define do
   factory :baleog_request, class: 'Baleog::Request' do
     skip_create
 

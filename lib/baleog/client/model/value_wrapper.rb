@@ -12,7 +12,8 @@ module Baleog
       # based on ValueWrapper rules
       #
       # One rule states that, if the class of the wrapping is a Baelog::Model,
-      # the value is initalized with {Baleog::Client::Model.from model_class.from}
+      # the value is initalized with
+      # {Baleog::Client::Model.from model_class.from}
       #
       # @see /gems/sinclair/1.16.2/Sinclair/Caster Sinclair::Caster
       # @see ValueWrapper.cast_with

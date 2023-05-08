@@ -8,14 +8,16 @@ FactoryBot.define do
       service_class.new(**service_attributes)
     end
 
-    service_class { Baleog::Service }
+    transient do
+      service_class { Baleog::Service }
 
-    service_attributes do
-      {
-        base_url: base_url
-      }
+      service_attributes do
+        {
+          base_url: base_url
+        }
+      end
+
+      sequence(:base_url) { |n| "http://someservice#{n}" }
     end
-
-    sequence(:base_url) { |n| "http://someservice#{n}" }
   end
 end

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Baleog::Request do
   subject(:request) do
-    create(:baleog_request)
+    create(:baleog_request, endpoint: {model: model_class})
   end
 
   let(:model_class)     { Person }

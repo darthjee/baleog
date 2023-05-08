@@ -8,14 +8,20 @@ FactoryBot.define do
       request_class.new(**request_attributes)
     end
 
-    request_class { Baleog::Request }
+    transient do
+      request_class { Baleog::Request }
 
-    request_attributes do
-      {
-        endpoint: endpoint
-      }
+      request_attributes do
+        {
+          endpoint: endpoint_object
+        }
+      end
+
+      endpoint { create(:baleog_endpoint) }
+
+      endpoint_object do
+        endpoint.is_a?(Hash) ? create(:baleog_endpoint, **endpoint) : endpoint
+      end
     end
-
-    endpoint { create(:baleog_endpoint) }
   end
 end

@@ -13,9 +13,13 @@ module Baleog
     autoload :Service,  'baleog/client/service'
 
     class << self
-      def configure
+      def build_nested_classes
         ClassBuilder.build(self, :Model)
         ClassBuilder.build(self::Model, :ValueWrapper)
+      end
+
+      def configure
+        build_nested_classes
       end
     end
   end

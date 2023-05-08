@@ -13,7 +13,10 @@ module Baleog
 
       def call
         url = [base_url, path.gsub(%r{^/}, '')].join('/')
-        response = Faraday.public_send(http_method, url)
+
+        response = Faraday.public_send(http_method, url) do |req|
+          req.body = payload if payload
+        end
 
         return JSON.parse(response.body) unless model
 

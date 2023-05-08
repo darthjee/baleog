@@ -7,7 +7,7 @@ FactoryBot.define do
     initialize_with do
       webmock_registry
         .register_request_stub(stubbed_request)
-        .with(headers: base_headers.merge(request_headers))
+        .with(headers: base_headers.merge(request_headers), body: request_body)
         .to_return(status: response_status, body: response_body)
     end
 
@@ -34,6 +34,7 @@ FactoryBot.define do
       base_url          { 'http://server.com' }
       path              { '/path' }
       request_headers   { {} }
+      request_body      { nil }
       response_status   { 200 }
       response          { {} }
       response_body     { response.to_json }

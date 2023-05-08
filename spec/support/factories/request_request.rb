@@ -8,11 +8,12 @@ FactoryBot.define do
       request  { create(:baleog_request) }
       endpoint { request.endpoint }
 
-      service     { endpoint.service }
-      base_url    { service.base_url }
-      path        { endpoint.path }
-      http_method { endpoint.http_method }
-      model       { endpoint.model }
+      service      { endpoint.service }
+      base_url     { service.base_url }
+      path         { endpoint.path }
+      request_body { request.payload }
+      http_method  { endpoint.http_method }
+      model        { endpoint.model }
     end
   end
 end

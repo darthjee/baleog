@@ -3,7 +3,7 @@
 FactoryBot.define do 
   factory :request_request, class: 'WebMock::RequestStub', parent: :http_request do
     transient do
-      request  { nil }
+      request  { create(:baleog_request) }
       endpoint { request.endpoint }
 
       service     { endpoint.service }

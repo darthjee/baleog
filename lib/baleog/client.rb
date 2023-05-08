@@ -13,8 +13,9 @@ module Baleog
     autoload :Service,  'baleog/client/service'
 
     class << self
-      def configure(&block)
+      def configure
         ClassBuilder.build(self, :Model)
+        ClassBuilder.build(self::Model, :ValueWrapper)
       end
     end
   end

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Baleog::Model do
+describe Baleog::Client::Model do
   let(:model_class) { Class.new(described_class) }
   let(:hash)        { { key: value } }
   let(:value)       { :value }

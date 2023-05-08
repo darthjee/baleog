@@ -11,10 +11,5 @@ require 'sinclair'
 module Baleog
   autoload :VERSION, 'baleog/version'
 
-  autoload :Client,         'baleog/client'
-  autoload :Endpoint,       'baleog/endpoint'
-  autoload :Model,          'baleog/model'
-  autoload :Request,        'baleog/request'
-  autoload :Response,       'baleog/response'
-  autoload :Service,        'baleog/service'
+  autoload :Client, 'baleog/client'
 end

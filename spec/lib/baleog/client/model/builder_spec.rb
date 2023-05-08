@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe Baleog::Model::Builder do
+describe Baleog::Client::Model::Builder do
   subject(:builder) { described_class.new(model_class) }
 
-  let(:base_model_class) { Class.new(Baleog::Model) }
+  let(:base_model_class) { Class.new(Baleog::Client::Model) }
   let(:model_class)      { Class.new(base_model_class) }
   let(:hash)             { { field_name: value } }
   let(:value)            { :value }

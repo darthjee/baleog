@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :baleog_request, class: 'Baleog::Request' do
+  factory :baleog_request, class: 'Baleog::Client::Request' do
     skip_create
 
     initialize_with do
@@ -9,7 +9,7 @@ FactoryBot.define do
     end
 
     transient do
-      request_class { Baleog::Request }
+      request_class { Baleog::Client::Request }
 
       request_attributes do
         {

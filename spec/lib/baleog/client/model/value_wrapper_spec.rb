@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe Baleog::Model::ValueWrapper do
+describe Baleog::Client::Model::ValueWrapper do
   subject(:wrapper_class) { base_model_class::ValueWrapper }
 
-  let(:base_model_class) { Class.new(Baleog::Model) }
+  let(:base_model_class) { Class.new(Baleog::Client::Model) }
 
   describe '.cast' do
     let(:value) { values.sample }

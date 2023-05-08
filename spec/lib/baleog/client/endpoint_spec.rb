@@ -2,14 +2,14 @@
 
 require 'spec_helper'
 
-describe Baleog::Endpoint do
+describe Baleog::Client::Endpoint do
   subject(:endpoint) { create(:baleog_endpoint, **attributes) }
 
   let(:path)        { SecureRandom.hex(10) }
   let(:http_method) { described_class::HTTP_METHODS.sample }
   let(:base_url)    { 'http://some_service.com' }
   let(:service) do
-    Baleog::Service.new(base_url: base_url)
+    Baleog::Client::Service.new(base_url: base_url)
   end
 
   let(:attributes) do

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Baleog::Model::FieldOptions do
+describe Baleog::Client::Model::FieldOptions do
   subject(:options) { described_class.new(**options_hash) }
 
   let(:field_name) { :field_name }
@@ -23,10 +23,12 @@ describe Baleog::Model::FieldOptions do
     end
 
     context 'when cast is a Class' do
-      let(:options_hash) { { field_name: field_name, cast: Baleog::Model } }
+      let(:options_hash) do
+        { field_name: field_name, cast: Baleog::Client::Model }
+      end
 
       it 'returns the cast' do
-        expect(options.klass).to eq(Baleog::Model)
+        expect(options.klass).to eq(Baleog::Client::Model)
       end
     end
 
@@ -39,10 +41,12 @@ describe Baleog::Model::FieldOptions do
     end
 
     context 'when cast is a string that represents a class' do
-      let(:options_hash) { { field_name: field_name, cast: 'Baleog::Model' } }
+      let(:options_hash) do
+        { field_name: field_name, cast: 'Baleog::Client::Model' }
+      end
 
       it 'returns the cast as Class' do
-        expect(options.klass).to eq(Baleog::Model)
+        expect(options.klass).to eq(Baleog::Client::Model)
       end
     end
   end

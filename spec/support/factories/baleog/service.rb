@@ -8,7 +8,7 @@ FactoryBot.define do
       service_class.new(**service_attributes)
     end
 
-    service_class { Baleog::Endpoint }
+    service_class { Baleog::Service }
 
     service_attributes do
       {
@@ -16,6 +16,6 @@ FactoryBot.define do
       }
     end
 
-    sequence(:base_url) { "http://someservice#{n}" }
+    sequence(:base_url) { |n| "http://someservice#{n}" }
   end
 end

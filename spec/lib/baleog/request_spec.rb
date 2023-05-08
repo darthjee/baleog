@@ -4,12 +4,11 @@ require 'spec_helper'
 
 describe Baleog::Request do
   subject(:request) do
-    create(:baleog_request, endpoint: {model: model_class})
+    create(:baleog_request, endpoint: { model: model_class })
   end
 
-  let(:model_class)     { Person }
-  let(:person)          { build(:model_person, **person_hash) }
-  let(:person_hash)     { { name: 'Some Name', age: 22 } }
+  let(:model_class)     { person.class }
+  let(:person)          { build(:model_person) }
   let(:response_status) { 200 }
 
   describe '#call' do

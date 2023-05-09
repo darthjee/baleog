@@ -12,7 +12,11 @@ module Baleog
     class LoaderConfig < Sinclair::Model
       initialize_with(:name, { file: nil, klass: nil }, **{})
 
-      def load
+      def adapter_class
+        load_class
+      end
+
+      def load_class
         require file if file
         adapter_class_name.constantize
       end

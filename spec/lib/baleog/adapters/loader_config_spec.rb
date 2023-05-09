@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Baleog::Adapters::LoaderConfig do
-  describe '#load' do
+  describe '#adapter_class' do
     subject(:config) { described_class.new(**attributes) }
 
     let(:name)           { SecureRandom.hex(16) }
@@ -28,13 +28,13 @@ describe Baleog::Adapters::LoaderConfig do
 
     context 'when defining with the file and class' do
       it 'requires the file' do
-        config.load
+        config.adapter_class
 
         expect(config).to have_received(:require).with(file_path)
       end
 
       it 'returns the class' do
-        expect(config.load).to eq(adapter_class)
+        expect(config.adapter_class).to eq(adapter_class)
       end
     end
 
@@ -44,13 +44,13 @@ describe Baleog::Adapters::LoaderConfig do
       let(:klass_name) { name.camelize }
 
       it 'requires the file' do
-        config.load
+        config.adapter_class
 
         expect(config).to have_received(:require).with(file_path)
       end
 
       it 'returns the class' do
-        expect(config.load).to eq(adapter_class)
+        expect(config.adapter_class).to eq(adapter_class)
       end
     end
 
@@ -58,13 +58,13 @@ describe Baleog::Adapters::LoaderConfig do
       let(:file_path) { nil }
 
       it 'requires the file' do
-        config.load
+        config.adapter_class
 
         expect(config).not_to have_received(:require)
       end
 
       it 'returns the class' do
-        expect(config.load).to eq(adapter_class)
+        expect(config.adapter_class).to eq(adapter_class)
       end
     end
 
@@ -75,13 +75,13 @@ describe Baleog::Adapters::LoaderConfig do
       let(:klass_name) { name.camelize }
 
       it 'requires the file' do
-        config.load
+        config.adapter_class
 
         expect(config).not_to have_received(:require)
       end
 
       it 'returns the class' do
-        expect(config.load).to eq(adapter_class)
+        expect(config.adapter_class).to eq(adapter_class)
       end
     end
   end

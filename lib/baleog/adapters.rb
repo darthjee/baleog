@@ -10,7 +10,7 @@ module Baleog
 
     class << self
       def adapter(name)
-        loader_for(name).load
+        loader_for(name).adapter_class
       end
 
       def with_adapter(name, **options)

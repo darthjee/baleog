@@ -8,13 +8,7 @@ module Baleog
     # @author darthjee
     #
     # Faraday adapter for executing http requests
-    class Faraday < Sinclair::Model
-      initialize_with(:request)
-
-      def self.call(request)
-        new(request: request).call
-      end
-
+    class Faraday < Adapters::Base
       def call
         response = ::Faraday.public_send(http_method, url) do |req|
           req.body = payload if payload

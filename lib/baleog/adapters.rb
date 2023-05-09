@@ -6,6 +6,7 @@ module Baleog
   #
   # Module responsible for loading adapters
   module Adapters
+    autoload :Base,         'baleog/adapters/base'
     autoload :LoaderConfig, 'baleog/adapters/loader_config'
     autoload :Response,     'baleog/adapters/response'
 

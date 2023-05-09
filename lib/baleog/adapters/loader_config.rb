@@ -15,7 +15,6 @@ module Baleog
       # @method initialize(name:, file: nil, klass: nil)
       # @api private
       #
-      #
       # @overload initialize(name:, file: nil, klass: nil)
       #   @param name [Symbol] the name of the adapter
       #   @param file [String] file to be required when loading the adapter.
@@ -27,16 +26,16 @@ module Baleog
       #
       # @overload initialize(name:, klass: nil)
       #   @param name [Symbol] the name of the adapter
-      #   @param klass [Class] Class object already loaded
+      #   @param klass [Class<Adapters::Base>] Class object already loaded
       #
-      # @return [Class]
+      # @return [Class<Adapters::Base>]
 
       # Class of the adapter
       #
       # If the class has not been loaded yet, the required file
       # will be loaded, and the constant will be requested
       #
-      # @return [Class]
+      # @return [Class<Adapters::Base>]
       def adapter_class
         @adapter_class ||= load_class
       end

@@ -12,16 +12,26 @@ module Baleog
 
     class << self
       def adapter(name)
-        loader_for(name).adapter_class
+        loaded_adapters[name] ||= load_adapter(name)
       end
 
-      def with_adapter(name, **options)
+      def with_adapter(name, file: nil, klass: nil)
+        return loaded_adapters[name] = klass if klass&.is_a?(Class)
+
         adapters[name.to_sym] = Adapters::LoaderConfig.new(
-          name: name, **options
+          name: name, file: file, klass: klass
         )
       end
 
       private
+
+      def loaded_adapters
+        @loaded_adapters ||= {}
+      end
+
+      def load_adapter(name)
+        loader_for(name).adapter_class
+      end
 
       def loader_for(name)
         adapters[name.to_sym] || Adapters::LoaderConfig.new(name: name)

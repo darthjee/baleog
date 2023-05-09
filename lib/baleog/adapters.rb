@@ -14,7 +14,9 @@ module Baleog
       end
 
       def with_adapter(name, **options)
-        adapters[name.to_sym] = Adapters::LoaderConfig.new(name: name, **options)
+        adapters[name.to_sym] = Adapters::LoaderConfig.new(
+          name: name, **options
+        )
       end
 
       private

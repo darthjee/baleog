@@ -28,13 +28,14 @@ describe Baleog::Adapters do
 
         before do
           described_class.with_adapter(
-            name, file: '/home/app/app/spec/not_loaded/adapters/my_first_adapter'
+            name,
+            file: '/home/app/app/spec/not_loaded/adapters/my_first_adapter'
           )
         end
 
         it 'returns the registered adapter' do
           expect { described_class.adapter(name) }
-            .to change { Baleog::Adapters.const_defined?(:MyFirstAdapter) }
+            .to change { described_class.const_defined?(:MyFirstAdapter) }
             .from(false).to(true)
         end
       end

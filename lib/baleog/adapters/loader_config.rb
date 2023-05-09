@@ -18,6 +18,7 @@ module Baleog
 
       def load_class
         return klass if klass&.is_a?(Class)
+
         require file if file
         adapter_class_name.constantize
       end

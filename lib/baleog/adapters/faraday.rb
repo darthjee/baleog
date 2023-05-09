@@ -3,7 +3,7 @@
 require 'faraday'
 
 module Baleog
-  module Adapter
+  module Adapters
     class Faraday < Sinclair::Model
       initialize_with(:request)
 

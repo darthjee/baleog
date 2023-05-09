@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Baleog
-  module Adapter
-    autoload :LoaderConfig, 'baleog/adapter/loader_config'
+  module Adapters
+    autoload :LoaderConfig, 'baleog/adapters/loader_config'
 
     class << self
       def adapter(name)
@@ -14,10 +14,10 @@ module Baleog
       end
 
       def with_adapter(name, **options)
-        adapters[name] = Adapter::LoaderConfig.new(name: name, **options)
+        adapters[name] = Adapters::LoaderConfig.new(name: name, **options)
       end
     end
 
-    with_adapter(:faraday, file: 'baleog/adapter/faraday')
+    with_adapter(:faraday, file: 'baleog/adapters/faraday')
   end
 end

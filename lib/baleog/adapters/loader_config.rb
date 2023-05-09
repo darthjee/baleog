@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Baleog
-  module Adapter
+  module Adapters
     class LoaderConfig < Sinclair::Model
       initialize_with(:name, { file: nil, klass: nil }, **{})
 
@@ -13,7 +13,7 @@ module Baleog
       def adapter_class_name
         return klass if klass
 
-        "Baleog::Adapter::#{name.to_s.camelize}"
+        "Baleog::Adapters::#{name.to_s.camelize}"
       end
     end
   end

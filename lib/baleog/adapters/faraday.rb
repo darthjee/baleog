@@ -22,7 +22,7 @@ module Baleog
 
         return JSON.parse(response.body) unless model
 
-        Client::Response.new(response: response, request: request)
+        Adapters::Response.new(response)
       end
 
       delegate :url, :http_method, :payload, :model, to: :request

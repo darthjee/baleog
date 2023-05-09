@@ -10,7 +10,9 @@ module Baleog
       initialize_with(:endpoint, { headers: {}, payload: nil }, **{})
 
       def call
-        Baleog::Adapters.adapter(:faraday).call(self)
+        response = Baleog::Adapters.adapter(:faraday).call(self)
+
+        Client::Response.new(response: response, request: self)
       end
 
       def url

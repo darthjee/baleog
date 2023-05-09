@@ -7,6 +7,7 @@ module Baleog
   # Module responsible for loading adapters
   module Adapters
     autoload :LoaderConfig, 'baleog/adapters/loader_config'
+    autoload :Response,     'baleog/adapters/response'
 
     class << self
       def adapter(name)

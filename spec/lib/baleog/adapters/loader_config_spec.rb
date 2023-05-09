@@ -38,7 +38,7 @@ describe Baleog::Adapters::LoaderConfig do
       end
     end
 
-    context 'when defining with the file' do
+    context 'when defining without class' do
       let(:klass)      { nil }
       let(:name)       { "my_dapter_#{SecureRandom.hex(16)}" }
       let(:klass_name) { name.camelize }
@@ -47,6 +47,37 @@ describe Baleog::Adapters::LoaderConfig do
         config.load
 
         expect(config).to have_received(:require).with(file_path)
+      end
+
+      it 'returns the class' do
+        expect(config.load).to eq(adapter_class)
+      end
+    end
+
+    context 'when defining without file' do
+      let(:file_path) { nil }
+
+      it 'requires the file' do
+        config.load
+
+        expect(config).not_to have_received(:require)
+      end
+
+      it 'returns the class' do
+        expect(config.load).to eq(adapter_class)
+      end
+    end
+
+    context 'when defining without class or file' do
+      let(:file_path)  { nil }
+      let(:klass)      { nil }
+      let(:name)       { "my_dapter_#{SecureRandom.hex(16)}" }
+      let(:klass_name) { name.camelize }
+
+      it 'requires the file' do
+        config.load
+
+        expect(config).not_to have_received(:require)
       end
 
       it 'returns the class' do

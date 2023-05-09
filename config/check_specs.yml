@@ -1,4 +1,5 @@
 ignore:
+  - lib/baleog/adapters/faraday.rb
   - lib/baleog/client/model/field_builder.rb
   - lib/baleog/client/response.rb
   - lib/baleog/client/service.rb

@@ -11,6 +11,15 @@ module Baleog
   module NestingBuilder
     autoload :ClassBuilder, 'baleog/nesting_builder/class_builder'
 
+    # Method called when inheriting
+    #
+    # This hook is called whenever a class
+    # extending NestingBuilder is inherited
+    #
+    # From all the {#with_nesting hooks},
+    # a new child class will be created
+    #
+    # @see NestingBuilder::ClassBuilder
     def inherited(child)
       complete_nesting_map.each do |name|
         NestingBuilder::ClassBuilder.build(child, name)

@@ -17,9 +17,11 @@ module Baleog
       autoload :ValueWrapper, 'baleog/client/model/value_wrapper'
 
       extend ClassMethods
+      extend NestingBuilder
       include Sinclair::Comparable
 
       comparable_by :@hash
+      with_nesting(:ValueWrapper)
       delegate :[], :[]=, :as_hash, :to_hash, to: :@hash
 
       # @method self.fields(field_names)

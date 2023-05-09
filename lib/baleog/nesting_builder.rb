@@ -15,8 +15,6 @@ module Baleog
       nesting_map.each do |name|
         NestingBuilder::ClassBuilder.build(child, name)
       end
-
-      NestingBuilder::ClassBuilder.build(child::Model, :ValueWrapper)
     end
 
     def nesting_map

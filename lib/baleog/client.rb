@@ -15,8 +15,8 @@ module Baleog
     autoload :Service,  'baleog/client/service'
 
     class << self
-      def configure
-        build_nested_classes
+      def inherited(child)
+        child.build_nested_classes
       end
     end
   end

@@ -12,8 +12,19 @@ module Baleog
     autoload :ClassBuilder, 'baleog/nesting_builder/class_builder'
 
     def inherited(child)
-      NestingBuilder::ClassBuilder.build(child, :Model)
+      nesting_map.each do |name|
+        NestingBuilder::ClassBuilder.build(child, name)
+      end
+
       NestingBuilder::ClassBuilder.build(child::Model, :ValueWrapper)
+    end
+
+    def nesting_map
+      @nesting_map ||= Set.new
+    end
+
+    def with_nesting(name)
+      nesting_map << name
     end
   end
 end

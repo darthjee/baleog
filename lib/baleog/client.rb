@@ -13,5 +13,7 @@ module Baleog
     autoload :Request,  'baleog/client/request'
     autoload :Response, 'baleog/client/response'
     autoload :Service,  'baleog/client/service'
+
+    with_nesting(:Model)
   end
 end

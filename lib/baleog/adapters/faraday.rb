@@ -20,8 +20,6 @@ module Baleog
           req.body = payload if payload
         end
 
-        return JSON.parse(response.body) unless model
-
         Adapters::Response.new(response)
       end
 

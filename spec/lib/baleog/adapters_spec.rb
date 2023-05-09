@@ -25,12 +25,12 @@ describe Baleog::Adapters do
 
       context 'when the adapter has not been loaded so far' do
         let(:name) { :my_first_adapter }
+        let(:file_path) do
+          "#{Dir.getwd}/spec/not_loaded/adapters/my_first_adapter"
+        end
 
         before do
-          described_class.with_adapter(
-            name,
-            file: '/home/app/app/spec/not_loaded/adapters/my_first_adapter'
-          )
+          described_class.with_adapter(name, file: file_path)
         end
 
         it 'returns the registered adapter' do

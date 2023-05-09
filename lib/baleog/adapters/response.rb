@@ -34,7 +34,7 @@ module Baleog
       private
 
       # @method original_response
-      # @api public
+      # @api private
       # @private
       #
       # Original response from the connector

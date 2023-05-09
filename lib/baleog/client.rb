@@ -14,10 +14,6 @@ module Baleog
     autoload :Response, 'baleog/client/response'
     autoload :Service,  'baleog/client/service'
 
-    class << self
-      def configure
-        build_nested_classes
-      end
-    end
+    with_nesting(:Model)
   end
 end

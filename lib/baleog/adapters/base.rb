@@ -10,7 +10,8 @@ module Baleog
       end
 
       def call
-        raise NotImplementedError, 'This needs to be implemented in the child class'
+        raise NotImplementedError,
+              'This needs to be implemented in the child class'
       end
 
       delegate :url, :http_method, :payload, :model, to: :request

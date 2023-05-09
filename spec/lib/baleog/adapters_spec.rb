@@ -70,17 +70,17 @@ describe Baleog::Adapters do
         before do
           allow_any_instance_of(Baleog::Adapters::LoaderConfig)
             .to receive(:require).with(file_path)
-            .and_raise("not_expected")
+                                 .and_raise('not_expected')
 
           described_class.with_adapter(name, file: file_path, klass: klass)
         end
 
-        it "does not load the file again" do
+        it 'does not load the file again' do
           expect { described_class.adapter(name) }
             .not_to raise_error
         end
 
-        it "returns the class" do
+        it 'returns the class' do
           expect(described_class.adapter(name))
             .to eq(klass)
         end

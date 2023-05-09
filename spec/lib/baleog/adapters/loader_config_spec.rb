@@ -38,6 +38,21 @@ describe Baleog::Adapters::LoaderConfig do
       end
     end
 
+    context 'when class is already a class' do
+      let(:klass)         { Baleog::Adapters::MyAdapter }
+      let(:adapter_class) { klass }
+
+      it 'requires the file' do
+        config.adapter_class
+
+        expect(config).not_to have_received(:require)
+      end
+
+      it 'returns the class' do
+        expect(config.adapter_class).to eq(adapter_class)
+      end
+    end
+
     context 'when defining without class' do
       let(:klass)      { nil }
       let(:name)       { "my_dapter_#{SecureRandom.hex(16)}" }

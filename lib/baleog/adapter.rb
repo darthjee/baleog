@@ -7,15 +7,14 @@ module Baleog
     class << self
       def adapter(name)
         adapters[name.to_sym].load
-        "Baleog::Adapter::#{name.to_s.camelize}".constantize
       end
 
       def adapters
         @adapters ||= {}
       end
 
-      def with_adapter(name, file:)
-        adapters[name] = Baleog::Adapter::LoaderConfig.new(name: name, file: file)
+      def with_adapter(name, **options)
+        adapters[name] = Adapter::LoaderConfig.new(name: name, **options)
       end
     end
 

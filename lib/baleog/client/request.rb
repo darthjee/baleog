@@ -10,7 +10,7 @@ module Baleog
       initialize_with(:endpoint, { headers: {}, payload: nil }, **{})
 
       def call
-        Baleog::Adapter::Faraday.call(self)
+        Baleog::Adapter.adapter(:faraday).call(self)
       end
 
       delegate :service, :path, :model, :http_method, to: :endpoint

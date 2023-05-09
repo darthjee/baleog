@@ -23,6 +23,11 @@ rules:
       - Baleog::ClassBuilder#build_with
       - Baleog::Endpoint#initialize
       - Baleog::Model::FieldBuilder#field_name
+      - Baleog::Adapters::Response#initialize
+      - Baleog::Client::Endpoint#initialize
+      - Baleog::Client::Model#initialize
+      - Baleog::Client::Request#initialize
+      - Baleog::Client::Response#initialize
   Summary::Presence:
     enabled: true
     exclude:
@@ -31,6 +36,11 @@ rules:
       - Baleog::ClassBuilder#initialize
       - Baleog::Endpoint#initialize
       - Baleog::Model#initialize
+      - Baleog::Adapters::Response#initialize
+      - Baleog::Client::Endpoint#initialize
+      - Baleog::Client::Model#initialize
+      - Baleog::Client::Request#initialize
+      - Baleog::Client::Response#initialize
   Summary::Length:
     enabled: true
     exclude: []

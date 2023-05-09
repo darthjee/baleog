@@ -13,7 +13,7 @@ module Baleog
       initialize_with(:name, { file: nil, klass: nil }, **{})
 
       def adapter_class
-        load_class
+        @adapter_class ||= load_class
       end
 
       def load_class

@@ -36,6 +36,20 @@ describe Baleog::Adapters::LoaderConfig do
       it 'returns the class' do
         expect(config.adapter_class).to eq(adapter_class)
       end
+
+      context 'when calling a second time' do
+        before { config.adapter_class }
+
+        it 'requires the file' do
+          config.adapter_class
+
+          expect(config).to have_received(:require).once
+        end
+
+        it 'returns the class' do
+          expect(config.adapter_class).to eq(adapter_class)
+        end
+      end
     end
 
     context 'when class is already a class' do

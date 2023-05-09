@@ -23,7 +23,37 @@ module Baleog
       # @param klass [String] Name of the class to be returned after
       #   the file is loaded
       #
+      #   When omitted klass is infered from the adapter name, under
+      #   {Baleog::Adapters}
+      #
       # @return [Class<Adapters::Base>]
+
+      # @method name
+      # @api private
+      #
+      # Name of the adapter
+      #
+      # @return [Symbol]
+
+      # @method file
+      # @api private
+      #
+      # file to be required when loading the adapter.
+      #
+      # when omitted, no file is required and the adapter is considered
+      # already loaded
+      #
+      # @return [String]
+
+      # @method klass
+      # @api private
+      #
+      # Name of the class to be returned after  the file is loaded
+      #
+      # When omitted klass is infered from the adapter name, under
+      # {Baleog::Adapters}
+      #
+      # @return [String]
 
       # Class of the adapter
       #

@@ -32,6 +32,26 @@ describe Baleog::Adapters::LoaderConfig do
 
         expect(config).to have_received(:require).with(file_path)
       end
+
+      it 'returns the class' do
+        expect(config.load).to eq(adapter_class)
+      end
+    end
+
+    context 'when defining with the file' do
+      let(:klass)      { nil }
+      let(:name)       { "my_dapter_#{SecureRandom.hex(16)}" }
+      let(:klass_name) { name.camelize }
+
+      it 'requires the file' do
+        config.load
+
+        expect(config).to have_received(:require).with(file_path)
+      end
+
+      it 'returns the class' do
+        expect(config.load).to eq(adapter_class)
+      end
     end
   end
 end

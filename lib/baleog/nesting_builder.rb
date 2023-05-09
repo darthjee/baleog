@@ -12,9 +12,15 @@ module Baleog
     autoload :ClassBuilder, 'baleog/nesting_builder/class_builder'
 
     def inherited(child)
-      nesting_map.each do |name|
+      complete_nesting_map.each do |name|
         NestingBuilder::ClassBuilder.build(child, name)
       end
+    end
+
+    def complete_nesting_map
+      return nesting_map unless superclass.try(:nesting_map)
+
+      nesting_map + superclass.nesting_map
     end
 
     def nesting_map

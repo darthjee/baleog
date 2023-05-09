@@ -59,6 +59,32 @@ describe Baleog::Adapters do
             .to be(Baleog::Adapters::MyAdapter)
         end
       end
+
+      context 'when passing an already existing class' do
+        let(:name) { "my_custom_adapter_#{SecureRandom.hex(10)}".to_sym }
+        let(:klass) { Baleog::Adapters::MyAdapter }
+        let(:file_path) do
+          "#{Dir.getwd}/spec/not_loaded/adapters/my_fake_adapter"
+        end
+
+        before do
+          allow_any_instance_of(Baleog::Adapters::LoaderConfig)
+            .to receive(:require).with(file_path)
+                                 .and_raise('not_expected')
+
+          described_class.with_adapter(name, file: file_path, klass: klass)
+        end
+
+        it 'does not load the file again' do
+          expect { described_class.adapter(name) }
+            .not_to raise_error
+        end
+
+        it 'returns the class' do
+          expect(described_class.adapter(name))
+            .to eq(klass)
+        end
+      end
     end
   end
 end

@@ -48,3 +48,7 @@ Style/HashTransformValues:
 RSpec/SubjectStub:
   Exclude:
     - spec/lib/baleog/adapters/loader_config_spec.rb
+
+RSpec/AnyInstance:
+  Exclude:
+    - spec/lib/baleog/adapters_spec.rb

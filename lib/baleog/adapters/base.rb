@@ -2,6 +2,10 @@
 
 module Baleog
   module Adapters
+    # @api public
+    # @author darthjee
+    #
+    # Base interface / implementation of Adapters
     class Base < Sinclair::Model
       initialize_with(:request)
 

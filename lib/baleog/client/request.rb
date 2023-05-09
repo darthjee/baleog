@@ -35,7 +35,7 @@ module Baleog
         [base_url, path.gsub(%r{^/}, '')].join('/')
       end
 
-      # method service
+      # @method service
       # @api private
       #
       # Returns the service object owning the endpoint
@@ -44,7 +44,7 @@ module Baleog
       #
       # @return [Client::Service]
 
-      # method path
+      # @method path
       # @api private
       #
       # Returns the endpoint path
@@ -53,7 +53,7 @@ module Baleog
       #
       # @return [String]
 
-      # method model
+      # @method model
       # @api private
       #
       # Returns the model class to wrap the response
@@ -63,7 +63,7 @@ module Baleog
       # @return [Class<Client::Model>]
       delegate :service, :path, :model, :http_method, to: :endpoint
 
-      # method base_url
+      # @method base_url
       # @api private
       #
       # Returns the service configured base URL

@@ -2,16 +2,15 @@
 
 module Baleog
   module Adapter
-    autoload :Faraday, 'baleog/adapter/faraday' 
-
     class << self
       def adapter(name)
-        adapters[name.to_sym].constantize
+        require adapters[name.to_sym]
+        "Baleog::Adapter::#{name.to_s.camelize}".constantize
       end
 
       def adapters
         @adapters ||= {
-          faraday: 'Baleog::Adapter::Faraday'
+          faraday: 'baleog/adapter/faraday'
         }
       end
     end

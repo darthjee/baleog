@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'faraday'
-
 module Baleog
   class Client
     # @api private
@@ -12,15 +10,11 @@ module Baleog
       initialize_with(:endpoint, { headers: {}, payload: nil }, **{})
 
       def call
-        url = [base_url, path.gsub(%r{^/}, '')].join('/')
+        Baleog::Adapters.adapter(:faraday).call(self)
+      end
 
-        response = Faraday.public_send(http_method, url) do |req|
-          req.body = payload if payload
-        end
-
-        return JSON.parse(response.body) unless model
-
-        Response.new(response: response, request: self)
+      def url
+        [base_url, path.gsub(%r{^/}, '')].join('/')
       end
 
       delegate :service, :path, :model, :http_method, to: :endpoint

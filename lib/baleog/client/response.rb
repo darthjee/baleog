@@ -25,7 +25,7 @@ module Baleog
       #
       # @return [Adapters::Response]
 
-      # @methos request
+      # @method request
       # @api public
       #
       # Returns the original request

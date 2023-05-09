@@ -12,6 +12,31 @@ module Baleog
     class LoaderConfig < Sinclair::Model
       initialize_with(:name, { file: nil, klass: nil }, **{})
 
+      # @method initialize(name:, file: nil, klass: nil)
+      # @api private
+      #
+      #
+      # @overload initialize(name:, file: nil, klass: nil)
+      #   @param name [Symbol] the name of the adapter
+      #   @param file [String] file to be required when loading the adapter.
+      #
+      #     when omitted, no file is required and the adapter is considered
+      #     already loaded
+      #   @param klass [String] Name of the class to be returned after
+      #     the file is loaded
+      #
+      # @overload initialize(name:, klass: nil)
+      #   @param name [Symbol] the name of the adapter
+      #   @param klass [Class] Class object already loaded
+      #
+      # @return [Class]
+
+      # Class of the adapter
+      #
+      # If the class has not been loaded yet, the required file
+      # will be loaded, and the constant will be requested
+      #
+      # @return [Class]
       def adapter_class
         @adapter_class ||= load_class
       end

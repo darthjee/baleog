@@ -12,8 +12,13 @@ module Baleog
     class Response < Sinclair::Model
       initialize_with(:response, :request)
 
-      delegate :status, :body, to: :response
-      delegate :model, to: :request
+      # @method response
+      # @api private
+      # @private
+      #
+      # 
+      # 
+      # @return [Object]
 
       def parsed_body
         @parsed_body ||= JSON.parse(body)
@@ -24,6 +29,9 @@ module Baleog
 
         model.from(parsed_body)
       end
+
+      delegate :status, :body, to: :response
+      delegate :model, to: :request
     end
   end
 end

@@ -2,9 +2,11 @@
 
 module Baleog
   module Adapter
+    autoload :LoaderConfig, 'baleog/adapter/loader_config'
+
     class << self
       def adapter(name)
-        require adapters[name.to_sym]
+        adapters[name.to_sym].load
         "Baleog::Adapter::#{name.to_s.camelize}".constantize
       end
 
@@ -13,7 +15,7 @@ module Baleog
       end
 
       def with_adapter(name, file:)
-        adapters[name] = file
+        adapters[name] = Baleog::Adapter::LoaderConfig.new(name: name, file: file)
       end
     end
 

@@ -20,6 +20,7 @@ module Baleog
     # a new child class will be created
     #
     # @see NestingBuilder::ClassBuilder
+    #
     # @return (see #complete_nesting_list)
     def inherited(child)
       complete_nesting_list.each do |name|

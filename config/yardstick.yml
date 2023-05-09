@@ -28,6 +28,8 @@ rules:
       - Baleog::Client::Model#initialize
       - Baleog::Client::Request#initialize
       - Baleog::Client::Response#initialize
+      - Baleog::NestingBuilder#inherited
+      - Baleog::NestingBuilder#complete_nesting_list
   Summary::Presence:
     enabled: true
     exclude:

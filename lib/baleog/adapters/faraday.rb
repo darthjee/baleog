@@ -16,8 +16,6 @@ module Baleog
       end
 
       def call
-        url = [base_url, path.gsub(%r{^/}, '')].join('/')
-
         response = ::Faraday.public_send(http_method, url) do |req|
           req.body = payload if payload
         end
@@ -27,7 +25,7 @@ module Baleog
         Client::Response.new(response: response, request: request)
       end
 
-      delegate :base_url, :path, :http_method, :payload, :model, to: :request
+      delegate :url, :http_method, :payload, :model, to: :request
     end
   end
 end

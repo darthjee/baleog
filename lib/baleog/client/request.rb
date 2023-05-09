@@ -13,6 +13,10 @@ module Baleog
         Baleog::Adapters.adapter(:faraday).call(self)
       end
 
+      def url
+        [base_url, path.gsub(%r{^/}, '')].join('/')
+      end
+
       delegate :service, :path, :model, :http_method, to: :endpoint
       delegate :base_url, to: :service
     end

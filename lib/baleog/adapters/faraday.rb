@@ -4,6 +4,10 @@ require 'faraday'
 
 module Baleog
   module Adapters
+    # @api private
+    # @author darthjee
+    #
+    # Faraday adapter for executing http requests
     class Faraday < Sinclair::Model
       initialize_with(:request)
 

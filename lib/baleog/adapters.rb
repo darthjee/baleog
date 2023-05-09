@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module Baleog
+  # @api private
+  # @author darthjee
+  #
+  # Module responsible for loading adapters
   module Adapters
     autoload :LoaderConfig, 'baleog/adapters/loader_config'
 

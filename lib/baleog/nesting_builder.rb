@@ -11,9 +11,9 @@ module Baleog
   module NestingBuilder
     autoload :ClassBuilder, 'baleog/nesting_builder/class_builder'
 
-    def build_nested_classes
-      NestingBuilder::ClassBuilder.build(self, :Model)
-      NestingBuilder::ClassBuilder.build(self::Model, :ValueWrapper)
+    def inherited(child)
+      NestingBuilder::ClassBuilder.build(child, :Model)
+      NestingBuilder::ClassBuilder.build(child::Model, :ValueWrapper)
     end
   end
 end

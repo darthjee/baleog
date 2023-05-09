@@ -13,11 +13,5 @@ module Baleog
     autoload :Request,  'baleog/client/request'
     autoload :Response, 'baleog/client/response'
     autoload :Service,  'baleog/client/service'
-
-    class << self
-      def inherited(child)
-        child.build_nested_classes
-      end
-    end
   end
 end

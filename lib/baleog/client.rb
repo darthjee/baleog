@@ -18,8 +18,25 @@ module Baleog
     extend NestingBuilder
     extend WithEndpoint
 
-    # @method self.with_nesting(name)
+    # @method self.with_endpoint(http_method, path, **options)
     # @api public
+    #
+    # Register an endpoint to the client
+    #
+    # @param http_method [Symbol] HTTP request method
+    # @param path [String] HTTP path of the endpoint
+    # @option options name [Symbol] (nil) name of the endpoint
+    # @option options service [Symbol] (:default) Name of the registered service
+    # @option options method_name [Symbol] (nil) Name of the method used
+    #   to access the endpoint
+    #
+    #   When omitted, +name+ will be used instead
+    #
+    # @see Client::Endpoint#initialize
+    # @return [Client::Endpoint]
+
+    # @method self.with_nesting(name)
+    # @api private
     #
     # Adds a nested class to be created in the list
     #

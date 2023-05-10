@@ -26,10 +26,10 @@ module Baleog
 
       private
 
-      delegate :method_name, to: :options
+      delegate :method_name, :endpoint_options, to: :options
 
       def endpoint
-        @endpoint ||= Endpoint.new(options.endpoint_options)
+        @endpoint ||= Endpoint.new(**endpoint_options)
       end
     end
   end

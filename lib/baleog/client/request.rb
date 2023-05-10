@@ -15,7 +15,21 @@ module Baleog
       # @param endpoint [Baleog::Endpoint] Endpoint where the request
       #   will happen
       # @param headers [Hash] Custom request headers
-      # @param payload [Hash] Payload to be sent on POST requests
+      # @param payload [Hash] Payload to be sent on POST, PATCH and PUT requests
+
+      # @method payload
+      # @api public
+      #
+      # Payload to be sent on POST, PATCH and PUT requests
+      #
+      # @return [Hash]
+
+      # @method headers
+      # @api public
+      #
+      # Custom request headers
+      #
+      # @return [Hash]
 
       # Request the endpoint
       #

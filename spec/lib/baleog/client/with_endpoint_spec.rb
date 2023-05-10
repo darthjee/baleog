@@ -41,5 +41,12 @@ describe Baleog::Client::WithEndpoint do
           .not_to add_method(name).to(client_class)
       end
     end
+
+    context 'when no meethod name or name is given' do
+      it do
+        expect { client_class.with_endpoint(http_method, path, **options) }
+          .not_to raise_error
+      end
+    end
   end
 end

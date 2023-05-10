@@ -9,6 +9,11 @@ module Baleog
     class Base < Sinclair::Model
       initialize_with(:request)
 
+      # @method initialize(request:)
+      # @api public
+      #
+      # @param request [Client::Request]
+
       def self.call(request)
         new(request: request).call
       end

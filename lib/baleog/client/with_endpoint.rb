@@ -17,7 +17,7 @@ module Baleog
 
         build_options = WithEndpointOptions.new(options_hash)
 
-        Client::EndpointBuilder.build(self, build_options) {}
+        Client::EndpointBuilder.build(self, build_options)
       end
 
       def endpoints

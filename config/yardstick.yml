@@ -19,6 +19,7 @@ rules:
   ReturnTag:
     enabled: true
     exclude:
+      - Baleog::Adapters.with_adapter
       - Baleog::Adapters::Base#initialize
       - Baleog::Adapters::Response#initialize
       - Baleog::ClassBuilder#build

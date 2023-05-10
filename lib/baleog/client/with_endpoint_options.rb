@@ -2,6 +2,10 @@
 
 module Baleog
   class Client
+    # @api private
+    # @author darthjee
+    #
+    # Endpoint building options
     class WithEndpointOptions < ::Sinclair::Options
       with_options(:name, :http_method, :path, :service, :method_name)
 

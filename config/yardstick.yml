@@ -19,17 +19,17 @@ rules:
   ReturnTag:
     enabled: true
     exclude:
+      - Baleog::Adapters::Response#initialize
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
-      - Baleog::Endpoint#initialize
-      - Baleog::Model::FieldBuilder#field_name
-      - Baleog::Adapters::Response#initialize
       - Baleog::Client::Endpoint#initialize
       - Baleog::Client::Model#initialize
+      - Baleog::Client::Model::FieldBuilder#field_name
       - Baleog::Client::Request#initialize
       - Baleog::Client::Response#initialize
-      - Baleog::NestingBuilder#inherited
+      - Baleog::Endpoint#initialize
       - Baleog::NestingBuilder#complete_nesting_list
+      - Baleog::NestingBuilder#inherited
   Summary::Presence:
     enabled: true
     exclude:

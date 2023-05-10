@@ -15,9 +15,7 @@ module Baleog
           http_method: http_method, path: path
         ))
 
-        Client::EndpointBuilder.build(self, build_options) do
-          add_endpoint(build_options.method_name)
-        end
+        Client::EndpointBuilder.build(self, build_options) {}
       end
 
       def endpoints

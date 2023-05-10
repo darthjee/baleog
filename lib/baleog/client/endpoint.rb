@@ -7,16 +7,19 @@ module Baleog
     #
     # This represents an endpoint to a service
     class Endpoint < Sinclair::Model
-      initialize_with :path, :service, { http_method: :get, model: nil }, **{}
+      initialize_with :path, :service, { http_method: :get, model: nil, name: nil }, **{}
 
       # Available HTTP methods for an endpoint
       HTTP_METHODS = %i[get post delete patch].freeze
 
-      # @!method initialize(path:, http_method: :get)
+      # @!method initialize(path:, service:, http_method: :get, model: nil, name: nil)
+      # @api private
       # @param path [String] Path of the endpoint
+      # @param service [Service] service configuration
       # @param http_method [Symbol] HTTP method to be used.
       #   Available options are defined in {HTTP_METHODS}
-      # @api private
+      # @param model [Model] model class to wrap the response
+      # @param name [Symbol] name of the endpoint
 
       # @method path
       # @api private
@@ -33,6 +36,27 @@ module Baleog
       # The available list is included in {HTTP_METHODS}
       #
       # @return [Symbol] the http method
+
+      # @method service
+      # @api private
+      #
+      # Returns the service object owning the endpoint
+      #
+      # @return [Client::Service]
+
+      # @method model
+      # @api private
+      #
+      # Returns the model class to wrap the response
+      #
+      # @return [Class<Client::Model>]
+
+      # @method name
+      # @api private
+      #
+      # Returns the name of the endpoint
+      #
+      # @return [Symbol]
     end
   end
 end

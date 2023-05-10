@@ -25,6 +25,11 @@ describe Baleog::Client::WithEndpoint do
         expect { client_class.with_endpoint(http_method, path, **options) }
           .to add_method(name).to(client_class)
       end
+
+      it do
+        expect(client_class.with_endpoint(http_method, path, **options))
+          .to be_a(Baleog::Client::Endpoint)
+      end
     end
 
     context 'when a name and method name are given' do

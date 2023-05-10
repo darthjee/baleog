@@ -3,8 +3,18 @@
 module Baleog
   class Client
     class EndpointBuilder < Sinclair
-      def add_endpoint(method_name, **options)
+      def add_endpoint(method_name)
         add_method(method_name) {} if method_name
+      end
+
+      def build
+        super
+
+        endpoint
+      end
+
+      def endpoint
+        @endpoint ||= Endpoint.new(options)
       end
     end
   end

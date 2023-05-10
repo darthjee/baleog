@@ -6,13 +6,14 @@ module Baleog
   #
   # Client object with all the endpoints
   class Client
-    autoload :Endpoint,        'baleog/client/endpoint'
-    autoload :EndpointBuilder, 'baleog/client/endpoint_builder'
-    autoload :Model,           'baleog/client/model'
-    autoload :Request,         'baleog/client/request'
-    autoload :Response,        'baleog/client/response'
-    autoload :Service,         'baleog/client/service'
-    autoload :WithEndpoint,    'baleog/client/with_endpoint'
+    autoload :Endpoint,            'baleog/client/endpoint'
+    autoload :EndpointBuilder,     'baleog/client/endpoint_builder'
+    autoload :Model,               'baleog/client/model'
+    autoload :Request,             'baleog/client/request'
+    autoload :Response,            'baleog/client/response'
+    autoload :Service,             'baleog/client/service'
+    autoload :WithEndpoint,        'baleog/client/with_endpoint'
+    autoload :WithEndpointOptions, 'baleog/client/with_endpoint_options'
 
     extend NestingBuilder
     extend WithEndpoint

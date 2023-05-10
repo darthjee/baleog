@@ -23,7 +23,7 @@ module Baleog
       end
 
       def endpoint
-        @endpoint ||= Endpoint.new(options)
+        @endpoint ||= Endpoint.new(options.endpoint_options)
       end
     end
   end

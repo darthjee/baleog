@@ -10,13 +10,13 @@ module Baleog
     # Endpoints can be added with or without a direct
     # method to access it
     module WithEndpoint
-      def with_endpoint(http_method, path, name: nil, method_name: name)
-        endpoint_options = {
-          name: name, http_method: http_method, path: path, service: nil
-        }
+      def with_endpoint(http_method, path, **options)
+        build_options = WithEndpointOptions.new(options.merge(
+          http_method: http_method, path: path
+        ))
 
-        Client::EndpointBuilder.build(self, endpoint_options) do
-          add_endpoint(method_name)
+        Client::EndpointBuilder.build(self, build_options) do
+          add_endpoint(build_options.method_name)
         end
       end
 

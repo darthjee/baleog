@@ -39,5 +39,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'yardstick',          '0.9.9'
 
   gem.add_runtime_dependency 'faraday',  '2.7.4'
-  gem.add_runtime_dependency 'sinclair', '>= 1.16.2'
+  gem.add_runtime_dependency 'sinclair', '>= 1.16.3'
 end

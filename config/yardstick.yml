@@ -1,4 +1,4 @@
-threshold: 95.1
+threshold: 96.4
 require_exact_threshold: false
 rules:
   ApiTag::Presence:
@@ -19,6 +19,8 @@ rules:
   ReturnTag:
     enabled: true
     exclude:
+      - Baleog::Adapters.with_adapter
+      - Baleog::Adapters::Base#initialize
       - Baleog::Adapters::Response#initialize
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
@@ -27,22 +29,26 @@ rules:
       - Baleog::Client::Model::FieldBuilder#field_name
       - Baleog::Client::Request#initialize
       - Baleog::Client::Response#initialize
+      - Baleog::Client::WithEndpointOptions#initialize
       - Baleog::Endpoint#initialize
       - Baleog::NestingBuilder#complete_nesting_list
       - Baleog::NestingBuilder#inherited
   Summary::Presence:
     enabled: true
     exclude:
+      - Baleog::Adapters::Base#initialize
+      - Baleog::Adapters::LoaderConfig#initialize
+      - Baleog::Adapters::Response#initialize
       - Baleog::ClassBuilder#build
       - Baleog::ClassBuilder#build_with
       - Baleog::ClassBuilder#initialize
-      - Baleog::Endpoint#initialize
-      - Baleog::Model#initialize
-      - Baleog::Adapters::Response#initialize
       - Baleog::Client::Endpoint#initialize
       - Baleog::Client::Model#initialize
       - Baleog::Client::Request#initialize
       - Baleog::Client::Response#initialize
+      - Baleog::Client::WithEndpointOptions#initialize
+      - Baleog::Endpoint#initialize
+      - Baleog::Model#initialize
   Summary::Length:
     enabled: true
     exclude: []

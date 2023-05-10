@@ -10,14 +10,25 @@ module Baleog
     # The endpoint is built and attached to a method to be accessible
     # from the client
     class EndpointBuilder < Sinclair
-      def add_endpoint
+      # Builds a method to access the built endpoint
+      #
+      # Build only happens when a method name has been given
+      #
+      # @return [Array<Sinclair::MethodDefinition>]
+      def add_endpoint_method
         return unless method_name
 
         add_method(method_name) {}
       end
 
+      # Builds an endpoint and adds a method to access it
+      #
+      # When method name is not provided, only the
+      # endpoint is built
+      #
+      # @return [Client::Endpoint]
       def build
-        add_endpoint
+        add_endpoint_method
 
         super
 

@@ -17,6 +17,8 @@ module Baleog
       # @option (see Client.with_endpoint)
 
       # Options hash for creating a new {Client::Endpoint Endpoint}
+      #
+      # @return [Hash]
       def endpoint_options
         {
           name: name, http_method: http_method, path: path, service: service

@@ -37,8 +37,30 @@ module Baleog
 
       private
 
+      # @method method_name
+      # @api private
+      # @private
+      #
+      # Method name to be used when accessing the endpoint
+      #
+      # When omitted, +name+ will be used instead
+      #
+      # @return [Symbol]
+
+      # @method endpoint_options
+      # @api private
+      # @private
+      #
+      # Options hash for creating a new {Client::Endpoint Endpoint}
+      #
+      # @return [Hash]
       delegate :method_name, :endpoint_options, to: :options
 
+      # @private
+      #
+      # Endpoint built
+      #
+      # @return [Client::Endpoint]
       def endpoint
         @endpoint ||= Endpoint.new(**endpoint_options)
       end

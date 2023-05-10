@@ -9,6 +9,9 @@ module Baleog
     #
     # Faraday adapter for executing http requests
     class Faraday < Adapters::Base
+      # Makes an HTTP request against an enndpoint
+      #
+      # @return [Adapters::Response]
       def call
         response = ::Faraday.public_send(http_method, url) do |req|
           req.body = payload if payload
@@ -16,8 +19,6 @@ module Baleog
 
         Adapters::Response.new(response)
       end
-
-      delegate :url, :http_method, :payload, :model, to: :request
     end
   end
 end

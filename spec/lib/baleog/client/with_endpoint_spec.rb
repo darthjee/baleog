@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+describe Baleog::Client::WithEndpoint do
+  let(:client_class) { Class.new(Baleog::Client) }
+
+  describe '#with_endpoint' do
+    let(:http_method) { :get }
+    let(:path)        { '/some_path' }
+    let(:name)        { nil }
+    let(:method_name) { nil }
+
+    let(:options) do
+      {
+        name: name,
+        method_name: method_name
+      }.compact
+    end
+
+    context 'when a name is given' do
+      let(:name) { :my_endpoint }
+
+      it do
+        expect { client_class.with_endpoint(http_method, path) }
+          .to add_method(name).to(client_class)
+      end
+    end
+  end
+end

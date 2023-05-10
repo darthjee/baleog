@@ -20,16 +20,6 @@ module Baleog
 
         Client::EndpointBuilder.build(self, build_options)
       end
-
-      private
-
-      # Map of all named {Endpoint endpoints}
-      # @private
-      #
-      # @return [Hash<Symbol, Client::Endpoint>]
-      def endpoints
-        @endpoints ||= {}
-      end
     end
   end
 end

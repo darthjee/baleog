@@ -11,9 +11,11 @@ module Baleog
     # method to access it
     module WithEndpoint
       def with_endpoint(http_method, path, **options)
-        build_options = WithEndpointOptions.new(options.merge(
+        options_hash = options.merge(
           http_method: http_method, path: path
-        ))
+        )
+
+        build_options = WithEndpointOptions.new(options_hash)
 
         Client::EndpointBuilder.build(self, build_options) {}
       end

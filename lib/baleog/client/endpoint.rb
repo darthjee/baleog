@@ -9,18 +9,22 @@ module Baleog
     class Endpoint < Sinclair::Model
       # Available HTTP methods for an endpoint
       HTTP_METHODS = %i[get post delete patch].freeze
+      # Default initialization method
       DEFAULTS = { http_method: :get, model: nil, name: nil }.freeze
 
       initialize_with :path, :service, DEFAULTS, **{}
 
-      # @!method initialize(path:, service:, http_method: :get, model: nil, name: nil)
+      # @!method initialize(options)
       # @api private
-      # @param path [String] Path of the endpoint
-      # @param service [Service] service configuration
-      # @param http_method [Symbol] HTTP method to be used.
+      # @option options path [String] Path of the endpoint
+      # @option options service [Service] service configuration
+      # @option options http_method [Symbol] (:get) HTTP method to be used.
       #   Available options are defined in {HTTP_METHODS}
-      # @param model [Model] model class to wrap the response
-      # @param name [Symbol] name of the endpoint
+      # @option options model [Model] (nil) model class to wrap the response
+      # @option options name [Symbol] (nil) name of the endpoint
+      #
+      # @see DEFAULTS
+      # @see HTTP_METHODS
 
       # @method path
       # @api private

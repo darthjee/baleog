@@ -23,7 +23,37 @@ module Baleog
       # @param klass [String] Name of the class to be returned after
       #   the file is loaded
       #
+      #   When omitted klass is infered from the adapter name, under
+      #   {Baleog::Adapters}
+      #
       # @return [Class<Adapters::Base>]
+
+      # @method name
+      # @api private
+      #
+      # Name of the adapter
+      #
+      # @return [Symbol]
+
+      # @method file
+      # @api private
+      #
+      # file to be required when loading the adapter
+      #
+      # when omitted, no file is required and the adapter is considered
+      # already loaded
+      #
+      # @return [String]
+
+      # @method klass
+      # @api private
+      #
+      # Name of the class to be returned after  the file is loaded
+      #
+      # When omitted klass is infered from the adapter name, under
+      # {Baleog::Adapters}
+      #
+      # @return [String]
 
       # Class of the adapter
       #
@@ -35,11 +65,27 @@ module Baleog
         @adapter_class ||= load_class
       end
 
+      private
+
+      # @private
+      # Load class from configuration
+      #
+      # If the file is given, the file is required first
+      # The class is then returned from the {#klass klass name}
+      #
+      # @return [Class<Adapters::Base>]
       def load_class
         require file if file
         adapter_class_name.constantize
       end
 
+      # @private
+      # Returns the class name to be loaded
+      #
+      # When {#klass} has not been given, then
+      # the class in infered from {Baleog::Adapters}::
+      #
+      # @return [String]
       def adapter_class_name
         return klass if klass
 

@@ -14,6 +14,14 @@ module Baleog
     autoload :Response, 'baleog/client/response'
     autoload :Service,  'baleog/client/service'
 
+    # @method self.with_nesting(name)
+    # @api public
+    #
+    # Adds a nested class to be created in the list
+    #
+    # @param name [Symbol] Name of the nested class to be built
+    #
+    # @return [Symbol]
     with_nesting(:Model)
   end
 end

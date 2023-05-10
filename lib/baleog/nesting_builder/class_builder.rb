@@ -13,6 +13,20 @@ module Baleog
     # This is required to enable different configurations for different
     # clients
     module ClassBuilder
+      # Builds a new instance of a nested class
+      #
+      # @example Final result
+      #   class A
+      #     class B
+      #     end
+      #   end
+      #
+      #   class C < A
+      #   end
+      #
+      #   # build runs generating C::B < A::B
+      #
+      # @return [NilClass]
       def self.build(parent_module, name)
         code = <<-RUBY
         proc do |parent_module|

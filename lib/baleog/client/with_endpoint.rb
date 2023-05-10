@@ -2,6 +2,13 @@
 
 module Baleog
   class Client
+    # @api public
+    # @author darthjee
+    #
+    # Module to add endpoints and methods to a client
+    #
+    # Endpoints can be added with or without a direct
+    # method to access it
     module WithEndpoint
       def with_endpoint(http_method, path, name: nil, method_name: name)
         endpoint_options = {

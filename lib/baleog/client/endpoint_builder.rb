@@ -2,6 +2,13 @@
 
 module Baleog
   class Client
+    # @api private
+    # @author darthjee
+    #
+    # Class responsible for building an endpoint in a client
+    #
+    # The endpoint is built and attached to a method to be accessible
+    # from the client
     class EndpointBuilder < Sinclair
       def add_endpoint(method_name)
         return unless method_name

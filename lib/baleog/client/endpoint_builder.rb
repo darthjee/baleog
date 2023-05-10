@@ -3,22 +3,9 @@
 module Baleog
   class Client
     class EndpointBuilder < Sinclair
-      def initialize(klass, method_name, **options)
-        @method_name = method_name
-        @options     = options
-
-        super(klass)
-      end
-
-      def build
+      def add_endpoint(method_name, **options)
         add_method(method_name) {}
-
-        super
       end
-
-      private
-
-      attr_reader :method_name, :options
     end
   end
 end

@@ -38,7 +38,7 @@ module Baleog
       # @method file
       # @api private
       #
-      # file to be required when loading the adapter.
+      # file to be required when loading the adapter
       #
       # when omitted, no file is required and the adapter is considered
       # already loaded
@@ -67,8 +67,8 @@ module Baleog
 
       private
 
-      # Load class from configuration
       # @private
+      # Load class from configuration
       #
       # If the file is given, the file is required first
       # The class is then returned from the {#klass klass name}
@@ -79,6 +79,7 @@ module Baleog
         adapter_class_name.constantize
       end
 
+      # @private
       # Returns the class name to be loaded
       #
       # When {#klass} has not been given, then

@@ -23,7 +23,7 @@ describe Baleog::NestingBuilder do
         .to change { Class.new(child_klass)::InnerClass }
     end
 
-    context 'after adding nesting build' do
+    context 'when inherance happens' do
       before { klass.with_nesting(:InnerClass) }
 
       it 'applies inherance on the inner class' do

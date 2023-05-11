@@ -9,6 +9,7 @@ module Debug
     def debug!
       @debug = true
       return unless block_given?
+
       yield
       @debug = false
     end

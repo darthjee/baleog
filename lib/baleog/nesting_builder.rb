@@ -23,6 +23,7 @@ module Baleog
     #
     # @return (see #complete_nesting_list)
     def inherited(child)
+      binding.pry if Debug.debug?
       complete_nesting_list.each do |name|
         NestingBuilder::ClassBuilder.build(child, name)
       end

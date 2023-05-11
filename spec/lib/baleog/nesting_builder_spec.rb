@@ -2,13 +2,16 @@
 
 require 'spec_helper'
 
-xdescribe Baleog::NestingBuilder do
-  let(:klass) { NestingClasses }
+describe Baleog::NestingBuilder do
+  let(:klass) { Class.new(NestingClasses) }
 
   describe '.with_nesting' do
     it 'adds a class to be copied on inheritance' do
-      expect { 1 + 1 }
-        .to change { Class.new(NestingClasses)::InnerClass }
+      expect { klass.with_nesting(:InnerClass) }
+        .to change { Class.new(klass)::InnerClass }
+    end
+
+    context 'after adding nesting build' do
     end
   end
 end

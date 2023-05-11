@@ -2,5 +2,4 @@ ignore:
   - lib/baleog/client/endpoint_builder.rb
   - lib/baleog/client/service.rb
   - lib/baleog/client/with_endpoint_options.rb
-  - lib/baleog/nesting_builder.rb
   - lib/baleog/version.rb

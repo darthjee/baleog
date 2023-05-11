@@ -2,14 +2,14 @@
 
 require 'spec_helper'
 
-fdescribe Baleog::Client::Response do
+describe Baleog::Client::Response do
   subject(:response) do
     described_class.new(request: request, response: adapter_response)
   end
 
-  let(:request)  { create(:baleog_request, endpoint: endpoint) } 
-  let(:endpoint) { create(:baleog_endpoint, model: model) } 
-  let(:person)   { create(:model_person) } 
+  let(:request)  { create(:baleog_request, endpoint: endpoint) }
+  let(:endpoint) { create(:baleog_endpoint, model: model) }
+  let(:person)   { create(:model_person) }
   let(:body)     { person.to_json }
   let(:status)   { 200 }
   let(:model)    { nil }

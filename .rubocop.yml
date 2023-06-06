@@ -52,3 +52,6 @@ RSpec/SubjectStub:
 RSpec/AnyInstance:
   Exclude:
     - spec/lib/baleog/adapters_spec.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

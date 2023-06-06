@@ -62,6 +62,11 @@ RSpec/MultipleMemoizedHelpers:
 Lint/EmptyClass:
   Exclude:
     - spec/support/**/*.rb
+    - spec/not_loaded/**/*.rb
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/**/*_spec.rb
 
 FactoryBot/FactoryAssociationWithStrategy:
   Enabled: false

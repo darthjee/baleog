@@ -58,3 +58,6 @@ RSpec/AnyInstance:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+FactoryBot/FactoryAssociationWithStrategy:
+  Enabled: false

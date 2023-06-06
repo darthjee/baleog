@@ -26,6 +26,7 @@ module Baleog
       complete_nesting_list.each do |name|
         NestingBuilder::ClassBuilder.build(child, name)
       end
+      super
     end
 
     # Complete list of classes nested classes to be generated

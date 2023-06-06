@@ -16,7 +16,6 @@ Gem::Specification.new do |gem|
 
   gem.files                 = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables           = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  gem.test_files            = gem.files.grep(%r{^(test|gem|features)/})
   gem.require_paths         = ['lib']
 
   gem.add_development_dependency 'bundler',            '>= 2.3.25'
@@ -40,4 +39,5 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'faraday',  '2.7.4'
   gem.add_runtime_dependency 'sinclair', '>= 2.0.1'
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end

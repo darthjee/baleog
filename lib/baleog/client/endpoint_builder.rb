@@ -18,7 +18,7 @@ module Baleog
       def add_endpoint_method
         return unless method_name
 
-        add_method(method_name) {}
+        add_method(method_name) { 1 }
       end
 
       # Builds an endpoint and adds a method to access it

@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   TargetRubyVersion: 2.7
+  NewCops: enable
 
 Metrics/BlockLength:
   Exclude:
@@ -52,3 +53,18 @@ RSpec/SubjectStub:
 RSpec/AnyInstance:
   Exclude:
     - spec/lib/baleog/adapters_spec.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Lint/EmptyClass:
+  Exclude:
+    - spec/support/**/*.rb
+    - spec/not_loaded/**/*.rb
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/**/*_spec.rb
+
+FactoryBot/FactoryAssociationWithStrategy:
+  Enabled: false

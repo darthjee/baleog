@@ -9,6 +9,10 @@ Baleog
 
 ![baleog](https://raw.githubusercontent.com/darthjee/baleog/master/baleog.png)
 
+Current Release: [0.0.1](https://github.com/darthjee/baleog/tree/0.0.1)
+
+[Next release](https://github.com/darthjee/baleog/compare/0.0.1...master)
+
 Yard Documentation
 -------------------
 [https://www.rubydoc.info/gems/baleog/0.0.1](https://www.rubydoc.info/gems/baleog/0.0.1)

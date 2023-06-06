@@ -18,14 +18,14 @@ describe Baleog::Client::Model do
       it { expect { model_class.new }.not_to raise_error }
     end
 
-    context 'when symbol keys are  given' do
+    context 'when symbol keys are given' do
       it do
         expect { model_class.new(hash) }
           .not_to raise_error
       end
     end
 
-    context 'when string keys are  given' do
+    context 'when string keys are given' do
       it do
         expect { model_class.new(hash.stringify_keys) }
           .not_to raise_error

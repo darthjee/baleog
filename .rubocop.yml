@@ -59,5 +59,9 @@ RSpec/AnyInstance:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+Lint/EmptyClass:
+  Exclude:
+    - spec/support/**/*.rb
+
 FactoryBot/FactoryAssociationWithStrategy:
   Enabled: false

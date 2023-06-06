@@ -51,7 +51,7 @@ module Baleog
       #
       #   @return [Class<Adapters::Base>] the registered class
       def with_adapter(name, file: nil, klass: nil)
-        return loaded_adapters[name] = klass if klass&.is_a?(Class)
+        return loaded_adapters[name] = klass if klass.is_a?(Class)
 
         adapters_configs[name.to_sym] = Adapters::LoaderConfig.new(
           name: name, file: file, klass: klass

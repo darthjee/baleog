@@ -13,6 +13,10 @@ Current Release: [0.0.1](https://github.com/darthjee/baleog/tree/0.0.1)
 
 [Next release](https://github.com/darthjee/baleog/compare/0.0.1...master)
 
+Baleog is intended to be a multi use client, that can be configured through a json or class methods,
+thus allowing for endpoints, accessible through methods, to be added, generating a collection of endpoints
+to be used by anyone using the client created having Baleog as base
+
 Yard Documentation
 -------------------
 [https://www.rubydoc.info/gems/baleog/0.0.1](https://www.rubydoc.info/gems/baleog/0.0.1)
